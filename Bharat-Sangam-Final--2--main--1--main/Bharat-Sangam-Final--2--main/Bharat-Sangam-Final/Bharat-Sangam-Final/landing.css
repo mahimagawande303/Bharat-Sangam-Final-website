@@ -1,0 +1,127 @@
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#dca04a;--gold-light:#efb65e;--cream:#f2e2ca;--black:#080504}
+html{scroll-behavior:smooth}
+body{background:#050b12;color:var(--cream);font-family:Inter,sans-serif}
+a{color:inherit;text-decoration:none}
+
+.hero{position:relative;min-height:100vh;height:100vh;overflow:hidden;background:#050b12}
+.hero-image{position:absolute;inset:0;background:url("landing-hero.jpg") center center/cover no-repeat;transform:scale(1.015)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,11,18,.98) 0%,rgba(9,20,31,.94) 29%,rgba(9,20,31,.55) 43%,rgba(5,11,18,.08) 69%),linear-gradient(0deg,rgba(2,7,13,.76),transparent 32%),linear-gradient(180deg,rgba(3,10,18,.5),transparent 28%)}
+
+.hero-content{position:relative;z-index:2;width:min(520px,42vw);margin-left:8.7%;padding-top:17vh}
+
+.ornament{width:375px;max-width:90%;display:flex;align-items:center;gap:10px;color:var(--gold);margin:23px 0 22px}
+.ornament span{height:1px;background:#a8773c;flex:1}
+.hero-content p{color:#cdbba6;font-size:15px;line-height:1.75;max-width:425px}
+.journey-btn{display:inline-flex;align-items:center;justify-content:space-between;gap:40px;margin-top:30px;padding:16px 28px 16px 35px;border-radius:32px;background:linear-gradient(135deg,#eab05b,#d98d2d);color:#261609;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.22);transition:transform .25s}
+.journey-btn:hover{transform:translateY(-3px)}
+.journey-btn span{font-size:24px}
+.scroll-hint{position:absolute;z-index:2;bottom:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:#d6c6b2;font-size:13px}
+.mouse{width:25px;height:35px;border:1px solid #eee0cd;border-radius:14px;display:grid;place-items:center;font-size:8px}
+
+.modal{position:fixed;z-index:30;inset:0;display:none;place-items:center;background:rgba(0,0,0,.78);backdrop-filter:blur(8px)}
+.modal.show{display:grid}
+.modal-card{position:relative;width:min(520px,90%);padding:55px;background:#1a0e08;border:1px solid #8e5f28;border-radius:18px;text-align:center}
+.modal-card h2{font:600 45px "Cormorant Garamond",serif;color:var(--gold-light)}
+.modal-card p{margin-top:12px;color:#c5b29c}
+.close-btn{position:absolute;top:12px;right:18px;background:transparent;border:0;color:#e8d7c1;font-size:30px;cursor:pointer}
+
+.brand {
+    position: absolute;
+    top: 28px;
+    left: 50px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-mark {
+    width:50px;height:50px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:29px
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+}
+
+.brand-name b {
+    color: #dca04a;
+}
+
+.brand-tagline {
+    margin-top: 7px;
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.3px;
+}
+
+/* ---- Hero heading text ---- */
+.hero-text {
+  font-family: "Cormorant Garamond", serif;
+  color: var(--cream);
+  max-width: 560px;
+}
+
+.discover {
+  font-size: clamp(65px, 7vw, 100px);
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 0;
+  color: #f0e0c9;
+}
+
+.line-sub {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(58px, 4.5vw, 60px);
+  font-weight: 400;
+  color: #e9d8c1;
+  margin: 6px 0;
+}
+
+.india {
+  font-size: clamp(90px, 9.5vw, 140px);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--gold);
+  margin: 4px 0;
+}
+
+.line-culture {
+  font-size: clamp(58px, 4.9vw, 60px);
+  font-weight: 500;
+  color: var(--cream);
+  margin: 0;
+}
+
+@media(max-width:1050px){
+  .brand{min-width:auto}
+  .nav-links{gap:20px}
+  .nav-links a{font-size:14px}
+  .outline-btn{padding:11px 17px}
+}
+
+@media(max-width:800px){
+  .navbar{height:78px;padding:13px 20px}
+  .brand strong{font-size:25px}
+  .brand small{display:none}
+  .brand-mark{width:43px;height:43px;font-size:25px}
+  .nav-links,.outline-btn{display:none}
+  .menu-btn{display:block;margin-left:auto}
+  .hero{min-height:900px;height:100svh}
+  .hero-image{background-position:63% center}
+  .hero-overlay{background:linear-gradient(90deg,rgba(8,4,2,.97),rgba(10,5,2,.8) 48%,rgba(8,4,2,.15)),linear-gradient(0deg,rgba(8,4,2,.85),transparent 45%)}
+  .hero-content{width:86%;margin-left:7%;padding-top:150px}
+  .hero-content p{font-size:14px}
+  .scroll-hint{bottom:18px}
+}

@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bharat Sangam — Explore. Discover. Experience India.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e1a;
+  --bg-alt:#0e1428;
+  --panel:#111a33;
+  --panel-2:#0d1426;
+  --gold:#d9a441;
+  --gold-light:#f0c674;
+  --gold-dim:rgba(217,164,65,0.28);
+  --maroon:#7c2222;
+  --maroon-light:#9e2f2f;
+  --text:#ece8dd;
+  --text-dim:#98a0b3;
+  --border:rgba(217,164,65,0.22);
+  --radius:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3,.serif{font-family:'Playfair Display',serif;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+img{max-width:100%;display:block;}
+.eyebrow{
+  font-size:0.78rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+}
+.btn{
+  padding:0.4rem 1rem;
+  border-radius:999px;
+  font-size:0.7rem;
+  font-weight:600;
+  border:1px solid var(--gold);
+  transition:background .25s ease, color .25s ease, transform .2s ease;
+  white-space:nowrap;
+}
+.btn-outline{background:transparent;color:var(--gold-light);}
+.btn-outline:hover{background:var(--gold);color:#171006;transform:translateY(-1px);}
+.btn-solid{background:linear-gradient(135deg,var(--gold),#b9812f);color:#1a1206;border:none;}
+.btn-solid:hover{filter:brightness(1.08);transform:translateY(-1px);}
+
+/* ---------- HEADER ---------- */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,14,26,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.header-inner{
+  max-width:1400px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.9rem 2.5rem;
+  gap:2rem;
+}
+.logo{display:flex;align-items:center;gap:0.7rem;}
+.logo-mark{
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:1.3rem;flex-shrink:0;
+}
+.logo-title{font-size:1.35rem;font-weight:600;color:var(--text);}
+.logo-title em{color:var(--gold-light);font-style:italic;}
+.logo-sub{display:block;font-size:0.68rem;color:var(--text-dim);letter-spacing:0.04em;}
+.main-nav{display:flex;gap:2.1rem;font-size:0.95rem;flex:1;justify-content:center;}
+.main-nav a{color:var(--text-dim);position:relative;padding-bottom:6px;}
+.main-nav a:hover{color:var(--text);}
+.main-nav a.active{color:var(--gold-light);}
+.main-nav a.active::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--gold);
+}
+.nav-cta{flex-shrink:0;}
+.menu-toggle{display:none;background:none;border:1px solid var(--border);color:var(--gold);border-radius:8px;padding:0.5rem 0.7rem;font-size:1.1rem;}
+
+/* ---------- CAROUSEL BANNER ---------- */
+.state-carousel{
+  position:relative;
+  background:linear-gradient(180deg,var(--bg-alt),var(--bg));
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+}
+.carousel-viewport{overflow:hidden;}
+.carousel-track{
+  display:flex;
+  transition:transform .6s cubic-bezier(.65,0,.35,1);
+}
+.carousel-slide{
+  min-width:100%;
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  align-items:center;
+  gap:3rem;
+  padding:3.2rem 6vw;
+  max-width:1400px;margin:0 auto;
+}
+.slide-index{color:var(--text-dim);font-size:0.78rem;letter-spacing:0.1em;}
+.slide-text h3{font-size:2.6rem;color:var(--gold-light);margin:0.5rem 0 0.9rem;font-weight:600;}
+.slide-text p{color:var(--text-dim);font-size:1.05rem;max-width:44ch;margin-bottom:1.3rem;}
+.slide-link{color:var(--gold-light);font-weight:600;border-bottom:1px solid var(--gold-dim);padding-bottom:2px;}
+.car-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(10,14,26,0.75);border:1px solid var(--gold-dim);
+  color:var(--gold-light);font-size:1.4rem;
+  display:flex;align-items:center;justify-content:center;
+  z-index:5;transition:background .2s;
+}
+.car-arrow:hover{background:var(--gold);color:#1a1206;}
+.car-arrow.prev{left:1.2rem;}
+.car-arrow.next{right:1.2rem;}
+.car-dots{
+  display:flex;justify-content:center;gap:0.5rem;padding-bottom:1.4rem;
+}
+.car-dots button{
+  width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;
+  transition:background .2s, width .2s;
+}
+/* ---------- HERO CAROUSEL (movable banner) ---------- */
+.hero-carousel{
+  position:relative;
+  width:100%;
+  aspect-ratio: 3 / 1;
+  max-height:360px;
+  overflow:hidden;
+  background:#000;
+  isolation:isolate;
+  border-bottom:1px solid var(--border);
+}
+
+@media(max-width:700px){ .hero-carousel{ aspect-ratio: 4 / 5; max-height:none; } }
+.hc-track{ display:flex; height:100%; width:100%; transition: transform .7s cubic-bezier(.65,0,.35,1); will-change:transform; }
+.hc-slide{ flex:0 0 100%; height:100%; position:relative; }
+.hc-slide img{
+  width:100%; height:100%; 
+  object-fit:contain; object-position:center center; display:block;
+  user-select:none; -webkit-user-drag:none;
+}
+.hc-slide::after{ content:''; position:absolute; inset:auto 0 0 0; height:34%; background:linear-gradient(180deg, transparent, rgba(0,0,0,.55)); pointer-events:none; }
+.hc-cta{
+  position:absolute; left:24px; bottom:20px; z-index:3;
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(5,7,14,.55); backdrop-filter:blur(6px);
+  border:1px solid rgba(228,183,93,.55); color:#fff; text-decoration:none;
+  font-family:'Marcellus',serif; font-size:14px; padding:9px 18px; border-radius:999px;
+  transition:.2s ease;
+}
+.hc-cta:hover{ background:var(--gold); color:#1a1305; border-color:var(--gold); }
+.hc-arrow{
+  position:absolute; top:50%; transform:translateY(-50%); z-index:4;
+  width:44px; height:44px; border-radius:50%;
+  background:rgba(5,7,14,.5); border:1px solid rgba(228,183,93,.4);
+  color:#fff; font-size:18px; line-height:1; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; transition:.2s ease;
+}
+.hero-carousel:hover .hc-arrow{ opacity:1; }
+.hc-arrow:hover{ background:var(--gold); color:#1a1305; border-color:var(--gold); }
+.hc-arrow.prev{ left:18px; }
+.hc-arrow.next{ right:18px; }
+@media(max-width:700px){ .hc-arrow{ opacity:1; width:36px; height:36px; font-size:15px; } }
+.hc-dots{ position:absolute; left:0; right:0; bottom:14px; z-index:4; display:flex; justify-content:center; gap:8px; }
+.hc-dot{ width:8px; height:8px; border-radius:50%; padding:0; border:none; background:rgba(255,255,255,.4); cursor:pointer; transition:.2s ease; }
+.hc-dot.active{ background:var(--gold); width:22px; border-radius:5px; }
+
+/* ---------- HERO ---------- */
+.hero{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:1.15fr 0.85fr;
+  gap:1.2rem;
+  padding:0.6rem 6vw 0.8rem;
+  align-items:center;
+}
+.hero-left h1{
+  font-size:1.1rem;line-height:1.15;margin:0.15rem 0 0.2rem;
+  color:var(--text);font-weight:600;
+}
+.hero-left h1 .accent{color:var(--gold-light);}
+.divider{color:var(--gold);letter-spacing:0.15em;font-size:0.52rem;margin-bottom:0.3rem;}
+.hero-left p{color:var(--text-dim);max-width:52ch;margin-bottom:0.4rem;font-size:0.85rem;line-height:1.45;}
+.hero-right{
+  display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;
+}
+.stat-cube{
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:0.35rem 0.5rem;
+  background:linear-gradient(160deg,rgba(217,164,65,0.06),transparent);
+  transition:border-color .2s, transform .2s;
+}
+.stat-cube:hover{border-color:var(--gold);transform:translateY(-3px);}
+.stat-cube .num{display:block;font-family:'Playfair Display',serif;font-size:0.95rem;color:var(--gold-light);font-weight:700;}
+.stat-cube .label{color:var(--text-dim);font-size:0.56rem;margin-top:0.08rem;display:block;}
+/* ---------- EXPLORE SECTION ---------- */
+.explore-section{
+  max-width:1400px;margin:0 auto;
+  padding:1rem 6vw 6rem;
+  text-align:center;
+}
+.explore-section h2{
+  font-size:2.1rem;margin:0.7rem 0 1.6rem;font-weight:600;color:var(--text);
+}
+.map-toggle-btn{margin-bottom:2.2rem;}
+.map-panel-wrap{
+  max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .55s ease, opacity .5s ease;
+}
+.map-panel-wrap.open{max-height:2400px;opacity:1;}
+.golden-heading{
+  font-size:1.5rem;color:var(--gold-light);margin-bottom:1.8rem;font-style:italic;font-weight:600;
+}
+.map-explorer{
+  display:grid;grid-template-columns:1.3fr 1fr;gap:1.6rem;
+  text-align:left;
+  align-items:start;
+}
+.explorer-viewport{overflow:hidden;}
+.explorer-track{
+  display:flex;
+  transition:transform .5s cubic-bezier(.65,0,.35,1);
+}
+.explorer-track.on-detail{ transform:translateX(-100%); }
+.explorer-slide{
+  width:100%;flex-shrink:0;
+  display:grid;grid-template-columns:1.3fr 1fr;gap:1.6rem;align-items:start;
+}
+.explorer-slide.detail-slide{grid-template-columns:1fr;}
+.items-detail-stage{min-width:0;}
+.map-stage{
+  position:relative;
+  aspect-ratio:647/736;
+  min-width:0;max-width:100%;
+  background:radial-gradient(ellipse at 50% 30%,rgba(124,34,34,0.14),transparent 70%);
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:1rem;
+  overflow:hidden;
+}
+#indiaShape{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 0 22px rgba(217,164,65,0.12));
+}
+.state-pin{
+  position:absolute;transform:translate(-50%,-50%);
+  background:rgba(10,14,26,0.85);border:1px solid var(--gold-dim);
+  color:var(--text);font-size:0.68rem;font-weight:600;
+  padding:0.28rem 0.6rem;border-radius:999px;white-space:nowrap;
+  transition:background .2s, border-color .2s, transform .2s;
+  z-index:3;
+}
+.state-pin:hover,.state-pin.active{
+  background:var(--gold);color:#1a1206;border-color:var(--gold);
+  transform:translate(-50%,-50%) scale(1.08);z-index:4;
+}
+.state-panel{
+  border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--panel);
+  padding:1.6rem;
+  min-height:460px;
+  min-width:0;max-width:100%;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+/* ---- empty state: never blank ---- */
+.panel-empty{
+  margin:auto 0;text-align:center;color:var(--text-dim);
+  display:flex;flex-direction:column;align-items:center;gap:1.1rem;
+}
+.panel-empty .pe-icon{
+  width:52px;height:52px;border-radius:50%;
+  border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;color:var(--gold);
+}
+.panel-empty h4{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--text);font-weight:600;}
+.panel-empty p{font-size:0.88rem;max-width:32ch;}
+.pe-chips{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-top:0.3rem;}
+.pe-chip{
+  border:1px solid var(--gold-dim);border-radius:999px;padding:0.4rem 0.9rem;
+  font-size:0.78rem;color:var(--gold-light);background:rgba(217,164,65,0.06);
+  transition:background .2s, transform .2s;
+}
+.pe-chip:hover{background:var(--gold);color:#1a1206;transform:translateY(-1px);}
+.pe-fact{
+  margin-top:0.6rem;padding-top:0.9rem;border-top:1px solid var(--border);
+  font-size:0.78rem;font-style:italic;color:var(--text-dim);max-width:34ch;
+}
+/* ---- cubical head card ---- */
+.panel-cube{
+  border:1px solid var(--gold-dim);border-radius:12px;
+  background:linear-gradient(155deg,rgba(217,164,65,0.09),rgba(217,164,65,0.01));
+  padding:1.3rem 1.4rem;margin-bottom:1.2rem;
+}
+.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.6rem;}
+.panel-head h3{font-size:1.7rem;color:var(--gold-light);font-weight:600;}
+.panel-close, .panel-back{
+  background:none;border:1px solid var(--border);color:var(--text-dim);
+  border-radius:8px;width:32px;height:32px;flex-shrink:0;
+}
+#detailBack{width:auto;padding:0 0.75rem;display:inline-flex;align-items:center;justify-content:center;gap:0.35rem;white-space:nowrap;}
+.panel-close:hover, .panel-back:hover{border-color:var(--gold);color:var(--gold-light);}
+.panel-desc{color:var(--text-dim);font-size:0.92rem;line-height:1.65;}
+/* ---- attractive category buttons ---- */
+.cat-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:0.7rem;
+}
+.cat-cube{
+  position:relative;overflow:hidden;
+  border:1px solid var(--border);border-radius:10px;
+  padding:1rem 0.7rem 0.85rem;text-align:center;
+  background:linear-gradient(160deg,rgba(217,164,65,0.07),rgba(255,255,255,0.015));
+  transition:background .25s, border-color .25s, transform .2s, box-shadow .25s;
+}
+.cat-cube .cc-icon{display:block;font-size:1.3rem;margin-bottom:0.4rem;}
+.cat-cube .cc-label{display:block;font-size:0.83rem;font-weight:600;color:var(--text);}
+.cat-cube .cc-count{display:block;font-size:0.68rem;color:var(--text-dim);margin-top:0.2rem;letter-spacing:0.03em;}
+.cat-cube:hover{
+  border-color:var(--gold);transform:translateY(-2px);
+  box-shadow:0 10px 22px -12px rgba(217,164,65,0.35);
+}
+.cat-cube.active{
+  background:linear-gradient(135deg,var(--gold),#b9812f);border-color:var(--gold);
+  box-shadow:0 10px 22px -10px rgba(217,164,65,0.45);
+}
+.cat-cube.active .cc-label{color:#1a1206;}
+.cat-cube.active .cc-count{color:rgba(26,18,6,0.65);}
+.cat-helper{
+  text-align:center;font-size:0.76rem;color:var(--text-dim);font-style:italic;
+  margin-bottom:0.2rem;
+}
+.panel-body{margin-top:0.6rem;flex:1;min-width:0;}
+/* ---- attractive gradient "place cards" for item lists ---- */
+.items-list{display:flex;flex-direction:column;gap:0.7rem;min-width:0;}
+.place-card{
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;
+  background:linear-gradient(115deg,#05070f 0%,#171c3a 48%,#2f3ea8 130%);
+  border:1px solid rgba(217,164,65,0.16);border-radius:16px;
+  padding:0.85rem 1rem;overflow:hidden;position:relative;
+  min-width:0;width:100%;text-align:left;
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s;
+}
+.place-card:hover{
+  transform:translateY(-2px);border-color:var(--gold-dim);
+  box-shadow:0 14px 30px -14px rgba(47,62,168,0.55);
+}
+.place-card.active{border-color:var(--gold);background:linear-gradient(115deg,#2a210d 0%,#5a4317 48%,#8b6720 130%);box-shadow:0 0 0 2px rgba(240,198,116,.28),0 14px 30px -14px rgba(217,164,65,.65);}
+.place-card.active .pc-name,.place-card.active .pc-quote{color:#fff8df;}
+.place-card .pc-name{
+  font-family:'Playfair Display',serif;font-size:1.02rem;color:#fff;
+  margin-bottom:0.25rem;display:flex;align-items:center;gap:0.4rem;
+  flex-wrap:wrap;overflow-wrap:break-word;
+}
+.place-card .pc-quote{
+  font-style:italic;font-size:0.78rem;color:rgba(255,255,255,0.68);
+  max-width:32ch;line-height:1.4;overflow-wrap:break-word;min-width:0;
+}
+.place-card > div:first-child{min-width:0;}
+.place-card .pc-photo{
+  width:58px;height:58px;border-radius:10px;overflow:hidden;flex-shrink:0;
+  border:1px solid rgba(255,255,255,0.18);
+}
+.place-card .pc-photo img{width:100%;height:100%;object-fit:cover;}
+.place-card .pc-photo img[alt="Mohiniyattam"]{object-fit:contain;object-position:center;background:#0b1020;}
+.place-card .pc-link-badge{
+  font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:999px;
+  padding:0.15rem 0.5rem;margin-left:0.3rem;flex-shrink:0;
+}
+.item-detail{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;align-items:start;text-align:left;}
+.speech-actions{display:flex;align-items:center;gap:0.55rem;justify-content:flex-start;margin:0.8rem 0 0.2rem;}
+.speech-language{padding:0.45rem 0.5rem;border:1px solid var(--gold-dim);border-radius:8px;background:#0d1426;color:var(--text);font:inherit;font-size:0.78rem;cursor:pointer;}
+.speak-description{display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.75rem;border:1px solid var(--gold-dim);border-radius:8px;background:rgba(217,164,65,0.08);color:var(--gold-light);font:inherit;font-size:0.78rem;cursor:pointer;}
+.speak-description:hover{background:rgba(217,164,65,0.18);border-color:var(--gold);}
+.item-detail h4{color:var(--gold-light);font-size:1.15rem;margin-bottom:0.6rem;font-family:'Playfair Display',serif;}
+.item-detail strong{color:var(--gold-light);}
+.item-detail p{text-align:left;color:var(--text-dim);font-size:0.9rem;}
+.item-detail p strong{color:var(--gold-light);font-weight:600;}
+.item-detail ul{margin:0.4rem 0 0.6rem 1.1rem;}
+.item-detail li{text-align:left;margin-bottom:0.3rem;color:var(--text-dim);font-size:0.9rem;}
+.item-detail .photo{
+  border-radius:8px;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3;
+}
+.item-detail .photo img{width:100%;height:100%;object-fit:cover;}
+.item-detail .photo img[alt="Mohiniyattam"]{object-fit:contain;object-position:center;background:#0b1020;}
+.heritage-layout{display:grid;grid-template-columns:minmax(0,0.85fr) minmax(390px,1.15fr);gap:1rem;align-items:start;}
+.heritage-map-slot{min-height:520px;border:1px dashed rgba(217,164,65,.18);border-radius:10px;background:rgba(10,18,36,.16);}
+.maha-map{position:sticky;top:0;align-self:start;min-width:0;border:1px solid var(--gold-dim);border-radius:10px;padding:0.7rem;background:linear-gradient(155deg,rgba(217,164,65,0.09),rgba(217,164,65,0.015));}
+.maha-map h5{color:var(--gold-light);font-family:'Playfair Display',serif;font-size:1rem;margin:0 0 0.5rem;text-align:center;}
+.maha-map-canvas{position:relative;aspect-ratio:1.2;overflow:hidden;border-radius:7px;background:#0b1020;}
+.maha-map-canvas img{display:block;width:100%;height:100%;object-fit:contain;transform:scale(1.04);filter:none;}
+.maha-map[aria-label="Historical Places in Kerala"] .maha-map-canvas img{transform:scale(1);transform-origin:center top;}
+.maha-pin{position:absolute;z-index:2;transform:translate(-50%,-50%);display:flex;align-items:center;gap:0.35rem;max-width:52%;padding:0.25rem 0.45rem 0.25rem 0.3rem;border:1px solid rgba(240,198,116,.8);border-radius:999px;background:rgba(8,14,32,.9);color:#fff2c9;font-family:inherit;font-size:0.68rem;font-weight:600;line-height:1.1;white-space:nowrap;text-align:left;text-shadow:0 1px 3px #000;box-shadow:0 3px 10px rgba(0,0,0,.4);cursor:pointer;}
+.maha-pin:hover{background:var(--gold);border-color:#fff1bd;color:#1a1206;transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 0 5px rgba(240,198,116,.3),0 5px 16px rgba(0,0,0,.55);}
+.maha-pin:hover::before{background:#1a1206;border-color:#fff1bd;box-shadow:0 0 0 3px rgba(26,18,6,.25),0 0 14px rgba(255,255,255,.8);}
+.maha-pin.active{background:var(--gold);border-color:#fff1bd;color:#1a1206;transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 0 5px rgba(240,198,116,.3),0 5px 16px rgba(0,0,0,.55);}
+.maha-pin.active::before{background:#1a1206;border-color:#fff1bd;box-shadow:0 0 0 3px rgba(26,18,6,.25),0 0 14px rgba(255,255,255,.8);}
+.maha-pin::before{content:"";width:12px;height:12px;flex:0 0 12px;border-radius:50%;background:var(--gold-light);border:2px solid #fff1bd;box-shadow:0 0 0 3px rgba(240,198,116,.28),0 0 14px rgba(240,198,116,.8);animation:mahaPinPulse 1.8s ease-in-out infinite;}
+@keyframes mahaPinPulse{0%,100%{box-shadow:0 0 0 3px rgba(240,198,116,.28),0 0 10px rgba(240,198,116,.6);}50%{box-shadow:0 0 0 7px rgba(240,198,116,.08),0 0 18px rgba(240,198,116,.95);}}
+@media(max-width:700px){.heritage-layout{grid-template-columns:1fr;}.maha-map,.heritage-map-slot{position:relative;top:auto;order:-1;}.heritage-map-slot{min-height:240px;}.maha-pin{font-size:0.58rem;padding:0.2rem 0.35rem 0.2rem 0.25rem;}.maha-pin::before{width:10px;height:10px;flex-basis:10px;}}
+.coming-soon{color:var(--text-dim);font-size:0.88rem;font-style:italic;padding:1rem 0;text-align:center;}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:960px){
+  .main-nav{display:none;}
+  .menu-toggle{display:block;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{grid-template-columns:1fr 1fr;}
+  .carousel-slide{grid-template-columns:1fr;text-align:center;padding:2.4rem 6vw;}
+  .slide-text p{margin-left:auto;margin-right:auto;}
+  .map-explorer{grid-template-columns:1fr;}
+  .map-stage{aspect-ratio:1/1;}
+  .state-panel{min-height:auto;}
+}
+@media (max-width:520px){
+  .header-inner{padding:0.8rem 1.2rem;}
+  .logo-sub{display:none;}
+  .hero-left h1{font-size:2.4rem;}
+  .hero-right{grid-template-columns:1fr 1fr;}
+  .item-detail{grid-template-columns:1fr;}
+  .cat-grid{grid-template-columns:1fr 1fr;}
+  .place-card{grid-template-columns:1fr;text-align:center;}
+  .place-card .pc-name{justify-content:center;}
+  .place-card .pc-quote{max-width:none;margin:0 auto;}
+  .place-card .pc-photo{width:100%;height:120px;margin:0 auto;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <span class="logo-mark">&#9737;</span>
+      <span>
+        <span class="logo-title">Bharat <em>Sangam</em></span>
+        <span class="logo-sub">Explore. Discover. Experience India.</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="#" class="active">Home</a>
+      <a href="#carousel">Explore</a>
+      <a href="#explore">States</a>
+      <a href="#">Heritage Sites</a>
+      <a href="#">Culture</a>
+      <a href="#">About Us</a>
+    </nav>
+    <button class="btn btn-outline nav-cta" type="button">Start Exploring</button>
+    <button class="menu-toggle" type="button">&#9776;</button>
+  </div>
+</header>
+
+<!-- MOVABLE HERO BANNER CAROUSEL -->
+<section class="hero-carousel" id="heroCarousel" aria-label="Featured states of India">
+  <div class="hc-track" id="hcTrack">
+    <div class="hc-slide">
+      <img src="assets/maharashtra.jpg" alt="Mesmerizing Maharashtra's Historical Sites">
+      <a class="hc-cta" href="#explore" data-goto="maharashtra">Explore Maharashtra</a>
+    </div>
+    <div class="hc-slide">
+      <img src="assets/rajasthan.jpg" alt="Tastes of Rajasthan">
+      <a class="hc-cta" href="#explore" data-goto="rajasthan">Explore Rajasthan</a>
+    </div>
+    <div class="hc-slide">
+      <img src="assets/uttar-pradesh.jpg" alt="Folk Music of Uttar Pradesh">
+      <a class="hc-cta" href="#explore" data-goto="up">Explore Uttar Pradesh</a>
+    </div>
+    <div class="hc-slide">
+      <img src="assets/kerala.jpg" alt="Dance forms of Kerala">
+      <a class="hc-cta" href="#explore" data-goto="kerala">Explore Kerala</a>
+    </div>
+  </div>
+  <button class="hc-arrow prev" id="hcPrev" aria-label="Previous slide" type="button">&#10094;</button>
+  <button class="hc-arrow next" id="hcNext" aria-label="Next slide" type="button">&#10095;</button>
+  <div class="hc-dots" id="hcDots"></div>
+</section>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <span class="eyebrow">Incredible India</span>
+    <h1>One Land,<br>Countless Stories</h1>
+    <div class="divider">&#9670; ————————— &#9670;</div>
+    <p>A land where centuries whisper through ancient stones, colors dance through countless festivals, and traditions pass from one generation to the next. India is a journey through time — a beautiful confluence of history, culture, art, and stories waiting to be discovered.</p>
+    <button class="btn btn-outline" onclick="document.getElementById('explore').scrollIntoView({behavior:'smooth'})" type="button">Start Exploring &#8594;</button>
+  </div>
+  <div class="hero-right">
+    <div class="stat-cube"><span class="num">5000+</span><span class="label">Years of History</span></div>
+    <div class="stat-cube"><span class="num">28</span><span class="label">States</span></div>
+    <div class="stat-cube"><span class="num">8</span><span class="label">Union Territories</span></div>
+    <div class="stat-cube"><span class="num">1000+</span><span class="label">Festivals</span></div>
+  </div>
+</section>
+
+<!-- EXPLORE INDIA -->
+<section class="explore-section" id="explore">
+  <span class="eyebrow">Explore India</span>
+  <h2>Click a state on the map to uncover its story</h2>
+  <button class="btn btn-solid map-toggle-btn" id="mapToggle" type="button">Explore Map</button>
+
+  <div class="map-panel-wrap" id="mapPanelWrap">
+    <h3 class="golden-heading">Explore Golden Bird</h3>
+   <div class="explorer-viewport">
+<div class="explorer-track" id="explorerTrack">
+
+  <div class="explorer-slide">
+    <div class="map-stage">
+      <img id="indiaShape" alt="Map of India with state names" src="India-map-en.svg">
+      <div id="statePins"></div>
+    </div>
+    <aside class="state-panel" id="statePanel">
+      <div class="panel-empty">
+        <div class="pe-icon">&#128205;</div>
+        <h4>Pick a state to begin</h4>
+        <p>Select one of the featured states on the map to explore its heritage, culture, art, and food.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="explorer-slide detail-slide">
+    <div class="items-detail-stage">
+      <button class="panel-back" id="detailBack" type="button">&#8592; Back to map</button>
+      <h3 class="golden-heading" id="detailCatTitle" style="font-size:1.2rem;margin:2.3em 0 0.8rem;"></h3>
+      <div id="detailBody"></div>
+    </div>
+  </div>
+
+</div>
+</div> 
+  </div>
+</section>
+
+<script>
+/* ---------------- DATA ---------------- */
+function items(list){
+  return list.map(s=>{
+    const [name, blurb] = s.split("|");
+    return {name, blurb};
+  });
+}
+const FEATURED = {
+  rajasthan:{
+    tagline:"Land of maharajas, desert forts, and vivid folk traditions.",
+    desc:   "Rajasthan is India's largest state — a mosaic of golden deserts, turreted forts and painted havelis. Rajput valor and vibrant folk traditions still shape everyday life here, from the colours people wear to the songs sung at weddings.",
+    x:22,y:39,
+    heritage:[
+      {name:"Amber Fort",blurb:"Magnificent hilltop fort combining Rajput military architecture with palace design",full:`<p><strong>Location:</strong> Amer, Jaipur, Rajasthan</p><p><strong>Period:</strong> Mainly 16th-18th century</p><p>Amber Fort is a magnificent hilltop fort overlooking Maota Lake near Jaipur. Built primarily under the Kachwaha Rajput rulers, it developed into an important royal residence and centre of administration. The fort combines Rajput military architecture with refined palace design and decorative influences.</p><p><strong>What Makes It Special</strong></p><ul><li>Grand gateways, courtyards, and fortified walls</li><li>Ornate mirror and stone work</li><li>Hilltop setting overlooking the surrounding landscape</li><li>Blend of Rajput and Mughal architectural influences</li><li>Historic royal palaces and audience halls</li></ul><p><strong>Don't Miss:</strong> The Sheesh Mahal, or Mirror Palace, is one of the fort's most striking spaces. Thousands of small reflective pieces create an elaborate decorative effect.</p><p><strong>Did You Know?</strong> Amber Fort forms part of the UNESCO-listed Hill Forts of Rajasthan.</p>`},
+      {name:"Chittorgarh Fort",blurb:"Vast hilltop fort complex and symbol of Rajput history",full:`<p><strong>Location:</strong> Chittorgarh, Rajasthan</p><p><strong>Period:</strong> Developed over several centuries</p><p>Chittorgarh Fort is one of India's largest fort complexes and a powerful symbol of Rajput history. It served as the capital of Mewar for centuries and witnessed major battles, sieges, royal ceremonies, and stories of Rajput resistance.</p><p><strong>What Makes It Special</strong></p><ul><li>Vast hilltop fort complex</li><li>Numerous palaces, temples, towers, and reservoirs</li><li>Strong association with the history of Mewar</li><li>Vijay Stambh and Kirti Stambh</li><li>UNESCO-listed Hill Fort of Rajasthan</li></ul><p><strong>Don't Miss:</strong> The Vijay Stambh, or Tower of Victory, rises prominently within the fort and is covered with intricate carvings and sculptural details.</p><p><strong>Explore the Legend:</strong> Imagine its courtyards and gateways when Chittorgarh was a thriving centre of Mewar's political and cultural life.</p>`},
+      {name:"Jantar Mantar",blurb:"Monumental Jaipur observatory combining architecture, mathematics and astronomy",full:`<p><strong>Location:</strong> Jaipur, Rajasthan</p><p><strong>Period:</strong> 18th century</p><p>Jantar Mantar in Jaipur is an extraordinary collection of large astronomical instruments commissioned by Maharaja Sawai Jai Singh II. The observatory was designed to observe celestial bodies and calculate astronomical measurements with remarkable precision.</p><p><strong>What Makes It Special</strong></p><ul><li>Large-scale masonry astronomical instruments</li><li>Instruments for measuring time and celestial positions</li><li>Combination of architecture, mathematics, and astronomy</li><li>UNESCO World Heritage Site</li><li>Demonstrates the scientific interests of 18th-century India</li></ul><p><strong>Don't Miss:</strong> The Samrat Yantra is a giant sundial designed to measure local solar time. Its enormous scale makes the relationship between architecture and astronomy easy to visualize.</p><p><strong>Did You Know?</strong> The observatory shows how scientific observation could be incorporated directly into monumental architecture.</p>`},
+      {name:"Hawa Mahal",blurb:"Iconic pink sandstone Palace of Winds with hundreds of jharokhas",full:`<p><strong>Location:</strong> Jaipur, Rajasthan</p><p><strong>Period:</strong> 1799 CE</p><p>Hawa Mahal, or the Palace of Winds, is one of Jaipur's most recognizable landmarks. Built during the reign of Maharaja Sawai Pratap Singh, its distinctive facade contains hundreds of small windows and openings.</p><p><strong>What Makes It Special</strong></p><ul><li>Iconic honeycomb-like facade</li><li>Hundreds of windows and jharokhas</li><li>Designed to allow air to circulate through the structure</li><li>Distinctive pink sandstone architecture</li><li>Closely associated with Jaipur's historic cityscape</li></ul><p><strong>Don't Miss:</strong> Look closely at the repeated jharokhas and their delicate patterns. The facade provided ventilation while allowing royal women to observe street life from behind screens.</p><p><strong>Did You Know?</strong> Its name, 'Hawa Mahal,' literally means 'Palace of Winds.'</p>`},
+      {name:"Jal Mahal",blurb:"Striking palace set in the middle of Man Sagar Lake",full:`<p><strong>Location:</strong> Man Sagar Lake, Jaipur, Rajasthan</p><p><strong>Period:</strong> Historic structure, later renovated</p><p>Jal Mahal is a striking palace situated in the middle of Man Sagar Lake. Its unusual setting makes it one of Jaipur's most recognizable architectural sights. The palace appears to float on the lake, with only its upper levels clearly visible when the water level is high.</p><p><strong>What Makes It Special</strong></p><ul><li>Palace surrounded by Man Sagar Lake</li><li>Symmetrical Rajput-style architecture</li><li>Dramatic reflection in the water</li><li>Scenic connection between architecture and landscape</li><li>Iconic Jaipur landmark</li></ul><p><strong>Don't Miss:</strong> The best-known view is from the lakeside, where the palace, water, and surrounding hills form a striking composition.</p><p><strong>Did You Know?</strong> Much of the palace remains below the waterline when the lake is filled, creating its distinctive floating appearance.</p>`}
+    ],
+    culture:items(["Pagdi (Turban) Tying|Colour and style of turban signals region and status","Kathputli Puppetry|String-puppet storytelling of wandering Bhat performers","Sanganeri Block Printing|Hand-carved wooden blocks stamping cotton","Miniature Painting|Detailed court paintings of the Mewar and Bundi schools","Pushkar Camel Fair|Centuries-old camel and cattle trading fair","Shekhawati Havelis|Frescoed merchant mansions, an open-air gallery","Meenakari Jewellery|Enamel work on gold, a Mughal-era Jaipur craft","Bandhani Tie-Dye|Traditional dot-pattern textile craft"]),
+    art:items(["Ghoomar|Swirling women's folk dance in flared skirts","Kalbelia|Snake-charmer community's 'dance of the serpent'","Kachhi Ghodi|Dummy-horse dance performed at weddings","Manganiyar Music|Hereditary desert musicians of centuries of patronage","Langa Music|Folk musicians of Jaisalmer known for sarangi and vocals","Chari Dance|Women balance fire pots on their heads while dancing","Bhavai|Balancing dance performed atop pots, swords or glass","Terah Taali|Ritual dance using cymbals tied to the body"]),
+    food:[
+      {name:"Dal Baati Churma",blurb:"Traditional Rajasthani meal combining baked wheat, dal and sweet churma",full:`<p><strong>Type:</strong> Traditional Rajasthani meal</p><p>Dal Baati Churma is one of Rajasthan's best-known traditional meals. It combines baati-firm baked or roasted wheat balls-with dal and churma, a sweet preparation made from crushed wheat-based baati. Ghee is commonly used to enrich the dish.</p><p><strong>What Makes It Special</strong></p><ul><li>Baati provides a hearty baked wheat base</li><li>Dal adds a flavorful and protein-rich component</li><li>Churma provides a sweet contrast</li><li>Traditionally associated with generous use of ghee</li><li>Represents Rajasthan's robust culinary traditions</li></ul><p><strong>Food Heritage:</strong> The dish reflects the region's ability to create filling foods from ingredients that can be stored and prepared in a dry climate.</p>`},
+      {name:"Gatte Ki Sabzi",blurb:"Gram-flour dumplings served in a spiced yogurt-based gravy",full:`<p><strong>Type:</strong> Traditional Rajasthani curry</p><p>Gatte ki Sabzi is made with gram-flour dumplings known as gatte, which are cooked and then served in a spiced yogurt-based gravy.</p><p><strong>What Makes It Special</strong></p><ul><li>Gram-flour dumplings with a distinctive texture</li><li>Tangy, spiced gravy</li><li>Uses ingredients suited to traditional Rajasthani cooking</li><li>Often served with roti or rice</li></ul><p><strong>Taste Note:</strong> The combination of soft gatte and rich, tangy, spiced gravy gives the dish its characteristic flavour.</p>`},
+      {name:"Ghewar",blurb:"Porous honeycomb-textured Rajasthani festive sweet",full:`<p><strong>Type:</strong> Traditional Rajasthani sweet</p><p>Ghewar is a distinctive disc-shaped sweet made from a flour-based batter that is fried to create a porous, honeycomb-like texture. It is commonly soaked or topped with sugar syrup and may be finished with rabri, nuts, or saffron.</p><p><strong>What Makes It Special</strong></p><ul><li>Characteristic honeycomb texture</li><li>Crisp yet syrupy layers</li><li>Commonly associated with festivals and celebrations</li><li>Especially popular during Teej and other festive occasions</li></ul><p><strong>Taste Note:</strong> Crisp, sweet, rich, and often creamy when served with rabri.</p>`},
+      {name:"Ker Sangri",blurb:"Traditional desert dish made from dried berries and beans",full:`<p><strong>Type:</strong> Traditional Rajasthani vegetable dish</p><p>Ker Sangri is a traditional desert dish made from dried berries and beans that grow in Rajasthan's arid environment. The ingredients are typically cooked with spices and oil to create a flavorful preparation.</p><p><strong>What Makes It Special</strong></p><ul><li>Uses locally available desert plants</li><li>Strong connection to Rajasthan's arid ecology</li><li>Can be preserved in dried form</li><li>Distinctive combination of tangy and earthy flavours</li></ul><p><strong>Food Heritage:</strong> Ker Sangri demonstrates how Rajasthani cuisine developed creative ways to use and preserve ingredients in a dry desert environment.</p>`}
+    ],
+    art:[
+      {name:"Rajput Paintings",blurb:"Royal-court painting traditions of Rajasthan and surrounding regions",full:`<p>Rajput painting refers to a group of painting traditions that flourished in the royal courts of Rajasthan and surrounding regions. Different Rajput courts developed their own styles, colours, themes, and techniques.</p><p><strong>Common Themes</strong></p><ul><li>Royal courts and rulers</li><li>Hindu mythology and religious stories</li><li>Krishna and Radha themes</li><li>Hunting scenes and courtly life</li><li>Landscapes, festivals, and romantic poetry</li></ul><p><strong>What Makes It Special:</strong> Rich colours, detailed figures, decorative patterns, and carefully composed scenes give Rajput paintings their distinctive visual character.</p>`},
+      {name:"Phad Painting",blurb:"Traditional scroll painting used for folk-deity storytelling",full:`<p>Phad is a traditional scroll-painting tradition of Rajasthan associated particularly with storytelling about folk deities and heroic figures. Painted scrolls were historically used by travelling performers as visual aids while narrating stories.</p><p><strong>The Signature Style</strong></p><p>Phad paintings contain multiple figures and scenes arranged across a continuous visual narrative. Strong outlines, bold colours, and symbolic details help communicate the story.</p><p><strong>Why It Matters:</strong> Phad connects visual art with oral storytelling, music, performance, and community traditions.</p><p><strong>Look Closely:</strong> Instead of treating the painting as a single scene, follow the different figures and episodes to understand the story unfolding across the scroll.</p>`},
+      {name:"Kathputli",blurb:"Rajasthan's traditional string-puppet theatre",full:`<p>Kathputli is Rajasthan's traditional string-puppet theatre. Wooden puppets dressed in colourful costumes are manipulated by puppeteers to perform stories, characters, music, and humorous scenes.</p><p><strong>What Makes It Special</strong></p><ul><li>Handmade wooden puppets</li><li>Colourful costumes and ornamentation</li><li>String-based puppet manipulation</li><li>Music, narration, and dramatic storytelling</li><li>Strong association with Rajasthan's folk performance heritage</li></ul><p><strong>Cultural Role:</strong> Kathputli has traditionally served as travelling entertainment and storytelling, carrying stories and characters from one community to another.</p>`}
+    ],
+    culture:[
+      {name:"Traditional Musical Instruments - Shehnai & Dholak",blurb:"Melodic and rhythmic instruments shaping Rajasthan's festive soundscape",full:`<p><strong>Shehnai</strong></p><p>The shehnai is a wind instrument known for its bright, expressive sound. It is traditionally associated with ceremonial and festive occasions and is widely recognized across Indian musical traditions.</p><p><strong>Dholak</strong></p><p>The dholak is a two-headed hand drum used extensively in folk and popular music. Its rhythmic patterns provide an energetic foundation for songs, dances, and community performances.</p><p><strong>Why They Matter</strong></p><p>Together, melodic instruments such as the shehnai and rhythmic instruments such as the dholak help create the lively soundscape of Rajasthan's traditional celebrations and performances.</p>`},
+      {name:"Ghoomar",blurb:"Rajasthan's circular folk dance of colourful spinning movement",full:`<p>Ghoomar is one of Rajasthan's most recognizable folk dances. Traditionally performed by women, dancers move in circular patterns while their colourful ghagras create flowing, spinning movements.</p><p><strong>What Makes It Special</strong></p><ul><li>Circular formations and graceful turns</li><li>Colourful traditional attire</li><li>Rhythmic folk music and singing</li><li>Performed during festivals, weddings, and celebrations</li></ul><p><strong>Visual Highlight:</strong> The spinning movement of the dancers' skirts is the signature visual feature of Ghoomar, creating a flowing circle of colour and motion.</p>`},
+      {name:"Kalbeliya",blurb:"Fluid folk dance tradition associated with the Kalbeliya community",full:`<p>Kalbeliya is a distinctive folk dance tradition associated with the Kalbeliya community of Rajasthan. The dance is known for rapid, fluid movements inspired by the graceful motion associated with the snake.</p><p><strong>What Makes It Special</strong></p><ul><li>Energetic and flexible movements</li><li>Distinctive black traditional costumes decorated with colourful embroidery and mirrors</li><li>Accompanied by traditional music and percussion</li><li>Strong connection to Kalbeliya community traditions</li></ul><p><strong>Performance Style:</strong> Dancers use flowing body movements, turns, and expressive gestures while musicians provide a lively rhythmic accompaniment.</p><p><strong>Cultural Importance:</strong> Kalbeliya is an important expression of Rajasthan's living folk heritage and is recognized internationally as a traditional cultural practice.</p>`}
+    ]
+  },
+  kerala:{
+    tagline:"Backwaters, spice hills, and India's most literate coastline.",
+    desc:   "Kerala threads palm-fringed backwaters, spice-scented hills and a deeply literate coastline into 'God's Own Country'. Its performing arts, temple festivals and cuisine carry centuries of trade with Arabia, China and Europe.",
+    x:25.5,y:85.5,
+    heritage:[
+      {name:"Fort Kochi",image:"assets/WhatsApp Image 2026-09-05 at 10.19.12 PM (2).jpeg",blurb:"Historic coastal neighbourhood shaped by Portuguese, Dutch and British influences",full:`<p><strong>Location:</strong> Kochi, Kerala</p><p>Fort Kochi is a historic coastal neighbourhood known for its layered Portuguese, Dutch, and British influences. Its streets, churches, trading spaces, colonial-era buildings, and waterfront reflect Kochi's long history as an important centre of maritime trade and cultural exchange.</p><p><strong>What Makes It Special</strong></p><ul><li>Blend of Indian and European architectural influences</li><li>Historic churches, streets, and colonial buildings</li><li>Strong connection with Kochi's maritime trading history</li><li>Famous Chinese fishing nets along the waterfront</li><li>Living heritage area with art, cafes, galleries, and cultural spaces</li></ul><p><strong>Don't Miss:</strong> The Chinese fishing nets along the waterfront are one of Fort Kochi's most recognizable sights. Their large wooden structures create a distinctive connection between the neighbourhood and its fishing traditions.</p><p><strong>Did You Know?</strong> Fort Kochi's cultural landscape reflects centuries of contact between Kerala and traders and colonial powers from different parts of the world.</p>`},
+      {name:"Bekal Fort",image:"assets/WhatsApp Image 2026-09-05 at 10.19.12 PM.jpeg",blurb:"Massive coastal fort overlooking the Arabian Sea",full:`<p><strong>Location:</strong> Kasaragod, Kerala</p><p><strong>Period:</strong> Historic fort complex</p><p>Bekal Fort is one of Kerala's most impressive coastal forts. Built for strategic defence, its massive laterite walls rise beside the Arabian Sea, giving the fort both military importance and a dramatic landscape.</p><p><strong>What Makes It Special</strong></p><ul><li>Large laterite fortification</li><li>Strategic location overlooking the Arabian Sea</li><li>Observation points and defensive structures</li><li>Distinctive keyhole-shaped openings in parts of the fort</li><li>Strong connection between architecture and coastal defence</li></ul><p><strong>Don't Miss:</strong> Walk along the fort walls and viewpoints to experience the wide view of the Arabian Sea. The combination of sea, laterite walls, and open landscape makes Bekal especially striking.</p><p><strong>Did You Know?</strong> The fort's elevated coastal position allowed it to serve an important defensive and surveillance role.</p>`}
+    ],
+    food:[
+      {name:"Medu Vada",image:"assets/WhatsApp Image 2026-09-05 at 10.19.09 PM.jpeg",blurb:"Crisp-on-the-outside, soft-on-the-inside South Indian savoury fritter",full:`<p><strong>Type:</strong> South Indian savoury snack</p><p>Medu vada is a crisp-on-the-outside, soft-on-the-inside savoury fritter made primarily from urad dal. It is commonly shaped like a ring and fried until golden.</p><p><strong>What Makes It Special</strong></p><ul><li>Crisp outer texture with a soft centre</li><li>Characteristic ring shape</li><li>Made from fermented or soaked urad-dal batter</li><li>Commonly served with sambar and coconut chutney</li><li>Popular as a breakfast or snack</li></ul><p><strong>Taste Note:</strong> Lightly spiced, savoury, crisp, and soft inside, medu vada pairs especially well with hot sambar and chutney.</p>`},
+      {name:"Appam",image:"assets/WhatsApp Image 2026-09-05 at 10.19.09 PM (1).jpeg",blurb:"Traditional Kerala rice pancake with lacy edges and soft centre",full:`<p><strong>Type:</strong> Traditional Kerala rice pancake</p><p>Appam is a distinctive Kerala pancake made from fermented rice batter, traditionally prepared in a curved pan. It has a soft, fluffy centre and thin, lacy edges.</p><p><strong>What Makes It Special</strong></p><ul><li>Delicate, lace-like edges</li><li>Soft and airy centre</li><li>Made using fermented rice batter</li><li>Commonly paired with vegetable or meat-based curries</li><li>A well-known part of Kerala's breakfast and festive food traditions</li></ul><p><strong>Taste Note:</strong> Mildly sweet and slightly tangy from fermentation, appam works especially well with rich, aromatic curries.</p>`},
+      {name:"Banana Chips",image:"assets/WhatsApp Image 2026-09-05 at 10.19.08 PM.jpeg",blurb:"Traditional Kerala snack fried from thin slices of raw banana",full:`<p><strong>Type:</strong> Traditional Kerala snack</p><p>Kerala banana chips are thin slices of raw banana that are traditionally fried until crisp. They are a popular snack and an important part of Kerala's festive food culture.</p><p><strong>What Makes It Special</strong></p><ul><li>Thin, crunchy slices</li><li>Made from raw bananas</li><li>Traditionally fried in coconut oil</li><li>Commonly served as a snack and during celebrations</li><li>Closely associated with Kerala's culinary identity</li></ul><p><strong>Food Heritage:</strong> Banana chips are often associated with Kerala's traditional feasts and celebrations, including their place on the banana-leaf spread of a sadya.</p>`}
+    ],
+    art:[
+      {name:"Kathakali",image:"assets/WhatsApp Image 2026-09-05 at 10.19.10 PM (2).jpeg",blurb:"Classical dance-drama combining acting, dance, music and elaborate costumes",full:`<p>Kathakali is Kerala's renowned classical dance-drama tradition, combining acting, dance, music, elaborate costumes, and highly stylized facial expressions. Performers use gestures and body movements to communicate stories, often drawn from Indian epics and traditional narratives.</p><p><strong>What Makes It Special</strong></p><ul><li>Elaborate makeup and costumes</li><li>Powerful facial expressions</li><li>Highly codified hand gestures</li><li>Dramatic movements and storytelling</li><li>Live musical accompaniment</li></ul><p><strong>Look Closely:</strong> The colours and patterns of Kathakali makeup help communicate aspects of a character's nature. Every gesture, eye movement, and expression contributes to the storytelling.</p><p><strong>Why It Matters:</strong> Kathakali turns mythology and traditional stories into a visually spectacular performance where costume, music, movement, and expression work together.</p>`},
+      {name:"Mohiniyattam",image:"assets/WhatsApp Image 2026-09-05 at 10.19.10 PM (1).jpeg",blurb:"Graceful Kerala classical dance with flowing movements",full:`<p>Mohiniyattam is Kerala's classical dance tradition traditionally associated with graceful, flowing movements. The name is connected with Mohini, the enchanting female form of Vishnu in Hindu mythology.</p><p><strong>What Makes It Special</strong></p><ul><li>Gentle, flowing movements</li><li>Expressive facial gestures</li><li>Graceful body swaying</li><li>Traditional white-and-gold costume</li><li>Strong connection with music and expressive storytelling</li></ul><p><strong>Visual Highlight:</strong> The dancer's controlled movements and gentle swaying create the characteristic flowing quality of Mohiniyattam.</p><p><strong>Why It Matters:</strong> Mohiniyattam represents an important part of Kerala's classical performing-arts heritage and its tradition of combining movement with expressive storytelling.</p>`},
+      {name:"Padayani",image:"assets/WhatsApp Image 2026-09-05 at 10.19.10 PM.jpeg",blurb:"Ritual theatre and folk performance with colourful masks and costumes",full:`<p>Padayani is a traditional ritual theatre and folk performance associated particularly with central Kerala. Performers use large, colourful masks and elaborate costumes to enact stories and symbolic characters.</p><p><strong>What Makes It Special</strong></p><ul><li>Giant masks and colourful effigies</li><li>Ritual performance and storytelling</li><li>Drumming and rhythmic movement</li><li>Strong connection with village temple traditions</li><li>Striking visual symbolism</li></ul><p><strong>Look Closely:</strong> The enormous masks and elaborate headpieces are among Padayani's most memorable features. Different characters and forms carry symbolic meanings within the performance.</p><p><strong>Why It Matters:</strong> Padayani brings together ritual, visual art, music, community participation, and storytelling, making it an important example of Kerala's living folk heritage.</p>`},
+      {name:"Koodiyattam",image:"assets/WhatsApp Image 2026-09-05 at 10.19.09 PM (2).jpeg",blurb:"Ancient Sanskrit theatre tradition and UNESCO-recognized heritage",full:`<p>Koodiyattam is an ancient Sanskrit theatre tradition of Kerala and is among India's oldest surviving theatrical traditions. Performances combine acting, gesture, facial expression, music, and highly developed theatrical conventions.</p><p><strong>What Makes It Special</strong></p><ul><li>Sanskrit theatre tradition</li><li>Detailed facial expressions and hand gestures</li><li>Highly developed acting techniques</li><li>Traditional performance spaces called koothambalams</li><li>UNESCO-recognized intangible cultural heritage</li></ul><p><strong>Performance Style:</strong> Koodiyattam performances can develop a story slowly, allowing performers to explore characters, emotions, and individual moments in great detail.</p><p><strong>Why It Matters:</strong> The tradition preserves an important theatrical heritage that connects classical Sanskrit drama with Kerala's unique performance culture.</p>`}
+    ],
+    culture:[
+      {name:"Kalaripayattu",image:"assets/WhatsApp Image 2026-09-05 at 10.19.11 PM (1).jpeg",blurb:"Traditional Kerala martial art focused on discipline, flexibility and control",full:`<p>Kalaripayattu is Kerala's traditional martial-art tradition. Training takes place in a kalari, a dedicated practice space, where students develop physical strength, flexibility, discipline, coordination, and knowledge of traditional techniques.</p><p><strong>What Makes It Special</strong></p><ul><li>Traditional martial training system</li><li>Emphasis on flexibility and body control</li><li>Weapon and unarmed techniques</li><li>Training in a dedicated kalari space</li><li>Strong connection to Kerala's cultural heritage</li></ul><p><strong>Beyond Combat:</strong> Kalaripayattu is also connected with traditional physical conditioning, discipline, performance, and knowledge passed between generations.</p><p><strong>Visual Highlight:</strong> Fast movements, controlled body positions, jumps, and weapon techniques make Kalaripayattu particularly engaging to watch.</p>`},
+      {name:"Onam",image:"assets/WhatsApp Image 2026-09-05 at 10.34.27 PM.jpeg",blurb:"Kerala harvest and cultural festival of feasts, flowers and community",full:`<p>Onam is Kerala's major harvest and cultural festival. Celebrations are associated with the legendary return of King Mahabali and bring families and communities together through feasts, decorations, games, music, and traditional performances.</p><p><strong>What Makes It Special</strong></p><ul><li>Elaborate pookalam floral designs</li><li>Traditional Onam sadya feast</li><li>Community celebrations and games</li><li>Boat races in many parts of Kerala</li><li>Traditional songs, dances, and festive gatherings</li></ul><p><strong>Don't Miss:</strong> The pookalam is one of Onam's most recognizable traditions. Families create intricate floral patterns at the entrance of homes as part of the celebrations.</p><p><strong>Why It Matters:</strong> Onam brings together food, art, folklore, community traditions, and seasonal celebration, making it an important expression of Kerala's cultural identity.</p>`},
+      {name:"Thrissur Pooram",image:"assets/WhatsApp Image 2026-09-05 at 10.19.11 PM.jpeg",blurb:"Spectacular Kerala temple festival with elephants, percussion and parasols",full:`<p>Thrissur Pooram is one of Kerala's most spectacular temple festivals, celebrated in Thrissur. It is famous for its grand processions, decorated elephants, percussion performances, and colourful ceremonial displays.</p><p><strong>What Makes It Special</strong></p><ul><li>Decorated elephants in ceremonial processions</li><li>Powerful traditional percussion ensembles</li><li>Colourful parasol displays</li><li>Large-scale public celebration</li><li>Strong connection to temple and community traditions</li></ul><p><strong>Visual Highlight:</strong> The changing rows of colourful parasols held above decorated elephants create one of the festival's most iconic sights.</p><p><strong>Why It Matters:</strong> Thrissur Pooram demonstrates Kerala's rich traditions of percussion, ceremonial art, craftsmanship, community participation, and festival culture.</p>`}
+    ]
+  },
+  punjab:{
+    tagline:"Golden fields, the Golden Temple, and the home of bhangra.",
+    desc:   "Punjab is the breadbasket of India, its mustard fields and wheat farms framing a culture built on resilience, faith and celebration. From the Golden Temple's langar to the beat of the dhol, generosity and energy define Punjabi life.",
+    x:27.0,y:21.7,
+    heritage:items(["Golden Temple|Sikhism's holiest shrine, gold-plated and moat-ringed","Anandpur Sahib|Birthplace site of the Khalsa order","Qila Mubarak|Historic fort at the heart of Patiala","Jallianwala Bagh|Memorial garden marking the 1919 tragedy","Wagah Border|Daily flag-lowering ceremony at the frontier","Sheesh Mahal, Patiala|Mirror-palace of Maharaja Narinder Singh","Ram Bagh, Amritsar|Garden and palace built by Ranjit Singh","Sarai Lashkari Khan|Preserved Mughal-era caravanserai"]),
+    culture:items(["Phulkari Embroidery|Vibrant floral thread-work on shawls","Punjabi Jutti|Handcrafted leather footwear with mirror-work","Baisakhi|Harvest and Khalsa-founding festival","Lohri|Winter bonfire festival marking the solstice","Langar Tradition|Free community kitchen at every Gurdwara","Truck Art|Elaborately painted trucks as folk art","Kushti Wrestling|Traditional akhara wrestling in villages","Turban Styles|Distinct Sikh turban styles carrying identity"]),
+    art:items(["Bhangra|High-energy harvest dance, a Punjabi symbol","Giddha|Women's rhythmic folk dance with boliyan","Tumbi Ballads|Folk songs of love and valor","Sufi Kalam|Devotional Sufi poetry sung at shrines","Dhol Playing|Double-headed drum driving every celebration","Jugni|Folk ballad narrating travel and social life","Sammi Dance|Women's dance with sammi ornament swirls","Malwai Giddha|Men's energetic folk dance from Malwa"]),
+    food:items(["Sarson da Saag & Makki di Roti|Mustard greens with cornbread","Amritsari Kulcha|Stuffed leavened bread from the tandoor","Butter Chicken|Tomato-butter gravy chicken, a Punjabi kitchen classic","Chole Bhature|Spiced chickpeas with deep-fried bread","Lassi|Thick yogurt drink, sweet or salted","Amritsari Fish|Gram-flour battered fried fish","Pinni|Winter sweet of ghee, jaggery and nuts","Tandoori Cooking|Clay-oven grilling technique used worldwide"])
+  },
+  tamilnadu:{
+    tagline:"Temple towers, classical arts, and Chola-era grandeur.",
+    desc:   "Tamil Nadu is home to some of the world's oldest living traditions — Dravidian temple architecture, classical Bharatanatyam and a 2,000-year-old literary heritage. Its towns still gather around temple gopurams the way they always have.",
+    x:43.3,y:82.9,
+    heritage:items(["Meenakshi Temple|Towering gopuram temple complex in Madurai","Brihadeeswarar Temple|Chola-era UNESCO temple in Thanjavur","Mahabalipuram Shore Temple|Rock-cut shore temple and rathas","Fort St. George|First English fortress built in India","Chettinad Mansions|Grand merchant houses with tile work","Gingee Fort|Hill fortress called 'the Troy of the East'","Padmanabhapuram Palace|Wooden Travancore-era royal palace","Rameswaram Temple|Corridor temple linked to the Ramayana"]),
+    culture:items(["Bharatanatyam|Classical temple dance with precise mudras","Kolam Art|Rice-flour geometric patterns at doorsteps","Pongal|Four-day harvest festival honouring the sun","Tanjore Painting|Gold-leaf classical painting style","Jallikattu|Traditional bull-taming sport","Kanchipuram Silk|Temple-town famed for silk sarees","Carnatic Tradition|South Indian classical music rooted in temples","Nadaswaram|Auspicious wind instrument in temple rituals"]),
+   art:items(["Carnatic Vocal Music|Raga-based classical singing tradition","Bharatanatyam Recitals|Solo temple-dance with live orchestra","Karagattam|Pot-balancing folk dance at village festivals","Villu Paatu|Bow-song storytelling, an ancient art form","Thappattam|Frame-drum folk dance of rural Tamil Nadu","Oyilattam|Graceful group folk dance in lines","Parai Attam|Ancient drum dance once used to announce events","Veena Recitals|String instrument central to Carnatic music"]),
+    food:items(["Idli Sambar|Steamed rice cakes with lentil stew","Chettinad Chicken|Fiery pepper-and-spice curry","Filter Coffee|Frothy decoction coffee in a tumbler-davara","Dosa|Fermented rice-lentil crepe, countless varieties","Pongal (dish)|Savory or sweet rice-and-lentil dish","Rasam|Tangy tamarind-pepper soup","Murukku|Crunchy spiral rice-flour snack","Banana Leaf Meal|Traditional multi-course meal on a leaf"])
+  },
+  up:{
+    tagline:"Home of the Taj Mahal and the sacred ghats of Varanasi.",
+    desc:   "Uttar Pradesh cradles some of India's most sacred and storied ground, from the Mughal grandeur of Agra to the ancient ghats of Varanasi. It is a state where empires rose and fell, and where devotion never paused.",
+    x:47.9,y:32.6,
+    heritage:[
+      {name:"Taj Mahal",blurb:"Iconic white-marble Mughal monument built in memory of Mumtaz Mahal",full:`<p><strong>Location:</strong> Agra, Uttar Pradesh</p><p><strong>Period:</strong> 17th century</p><p>The Taj Mahal is an iconic monument of Mughal architecture built by Emperor Shah Jahan in memory of his wife Mumtaz Mahal. Constructed primarily in white marble, the complex combines architecture, gardens, calligraphy, and decorative craftsmanship into a carefully balanced design.</p><p><strong>What Makes It Special</strong></p><ul><li>Monumental white-marble architecture</li><li>Symmetrical gardens and reflecting pools</li><li>Intricate marble inlay work</li><li>Delicate calligraphy and geometric decoration</li><li>UNESCO World Heritage Site</li></ul><p><strong>Don't Miss:</strong> Look closely at the pietra dura marble inlay, where colourful stones are arranged into floral and geometric patterns. The monument's appearance also changes subtly with the light throughout the day.</p><p><strong>Did You Know?</strong> The Taj Mahal is part of a larger complex containing a main mausoleum, mosque, guest pavilion, gardens, gateways, and other structures.</p>`},
+      {name:"Fatehpur Sikri",blurb:"Planned red-sandstone Mughal imperial city near Agra",full:`<p><strong>Location:</strong> Near Agra, Uttar Pradesh</p><p><strong>Period:</strong> 16th century</p><p>Fatehpur Sikri was established by Mughal emperor Akbar and served as the imperial capital for a period in the late 16th century. The planned city contains palaces, courtyards, religious buildings, and monumental gateways that reflect Akbar's architectural vision.</p><p><strong>What Makes It Special</strong></p><ul><li>Red sandstone architecture</li><li>Planned courtyards and palace complexes</li><li>Blend of regional and Islamic architectural influences</li><li>Buland Darwaza, one of India's monumental gateways</li><li>UNESCO World Heritage Site</li></ul><p><strong>Don't Miss:</strong> The Panch Mahal, with its series of diminishing levels, and the richly detailed palace courtyards are especially striking.</p><p><strong>Explore the Story:</strong> The complex offers a glimpse into court life, administration, architecture, and cultural interaction during Akbar's reign.</p>`},
+      {name:"Sarnath",blurb:"Ancient Buddhist site where the Buddha delivered his first sermon",full:`<p><strong>Location:</strong> Near Varanasi, Uttar Pradesh</p><p><strong>Historical significance:</strong> Ancient Buddhist site</p><p>Sarnath is one of the most important Buddhist sites in India. According to Buddhist tradition, Gautama Buddha delivered his first sermon here after attaining enlightenment, beginning his teaching journey.</p><p><strong>What Makes It Special</strong></p><ul><li>Major Buddhist pilgrimage destination</li><li>Dhamek Stupa and archaeological remains</li><li>Ancient monasteries and sculptures</li><li>Strong connection with the spread of Buddhist teachings</li><li>Important centre of Buddhist heritage</li></ul><p><strong>Don't Miss:</strong> The Dhamek Stupa is the most prominent monument at the site. The nearby museum is also known for important ancient sculptures, including the Lion Capital associated with India's national emblem.</p><p><strong>Did You Know?</strong> Sarnath connects India's ancient archaeological heritage with the continuing international tradition of Buddhist pilgrimage.</p>`},
+      {name:"Varanasi Ghats",blurb:"Living historic riverfront along the Ganga",full:`<p><strong>Location:</strong> Varanasi, Uttar Pradesh</p><p><strong>Setting:</strong> Along the River Ganga</p><p>The ghats of Varanasi are a series of stone steps and waterfront spaces along the Ganga. They have served for centuries as places for bathing, worship, ceremonies, festivals, and everyday community life.</p><p><strong>What Makes It Special</strong></p><ul><li>Historic riverfront architecture</li><li>Religious and cultural ceremonies</li><li>Distinctive steps, temples, and waterfront buildings</li><li>Daily interaction between the city and the Ganga</li><li>Living heritage rather than a single monument</li></ul><p><strong>Don't Miss:</strong> The evening Ganga Aarti creates a memorable visual experience of lamps, music, chanting, and coordinated ceremonial movement along the riverfront.</p><p><strong>Explore the Experience:</strong> Unlike a monument that is viewed from outside, the ghats are a living cultural landscape where architecture, spirituality, daily life, and river traditions come together.</p>`},
+      {name:"Jhansi Fort",blurb:"Historic hilltop fort associated with Rani Lakshmibai and resistance",full:`<p><strong>Location:</strong> Jhansi, Uttar Pradesh</p><p><strong>Period:</strong> 17th-19th century history</p><p>Jhansi Fort is a historic hilltop fort associated strongly with the history of Jhansi and the resistance of Rani Lakshmibai during the Indian Rebellion of 1857. Its elevated position and strong defensive walls made it an important strategic site.</p><p><strong>What Makes It Special</strong></p><ul><li>Fortified hilltop setting</li><li>Strong defensive architecture</li><li>Bastions, gateways, and historic structures</li><li>Association with Rani Lakshmibai</li><li>Important symbol of courage and resistance</li></ul><p><strong>Don't Miss:</strong> Explore the fort walls and viewpoints to understand its defensive design and strategic location over the city.</p><p><strong>Did You Know?</strong> Jhansi Fort has become closely connected with the popular memory of Rani Lakshmibai and her role in the events of 1857.</p>`}
+    ],
+    food:[
+      {name:"Banarasi Paan",blurb:"Traditional Varanasi betel-leaf preparation with sweet and aromatic fillings",full:`<p><strong>Type:</strong> Traditional Varanasi preparation</p><p>Banarasi paan is a famous preparation associated with Varanasi. A betel leaf is folded around a filling that may include areca nut, slaked lime, spices, and sweet ingredients. Sweet versions are especially popular.</p><p><strong>What Makes It Special</strong></p><ul><li>Strong association with Varanasi's food culture</li><li>Carefully folded betel leaf presentation</li><li>Wide variety of sweet and traditional fillings</li><li>Often offered as a gesture of hospitality</li><li>Part of the city's distinctive street-food identity</li></ul><p><strong>Cultural Note:</strong> Banarasi paan is more than a food item in popular culture; it is closely associated with the social atmosphere and identity of Varanasi.</p>`},
+      {name:"Baati Chokha",blurb:"Rustic North Indian meal of baked wheat baati and roasted vegetable chokha",full:`<p><strong>Type:</strong> Traditional North Indian meal</p><p>Baati Chokha is a rustic meal particularly associated with the Bhojpuri and eastern Uttar Pradesh region. Baati consists of baked wheat dough, while chokha is a mashed preparation commonly made with roasted vegetables such as potato, brinjal, or tomato.</p><p><strong>What Makes It Special</strong></p><ul><li>Simple, hearty ingredients</li><li>Smoky flavour from roasted vegetables</li><li>Wheat-based baati provides a filling base</li><li>Often accompanied by chutneys, spices, and ghee</li><li>Strong connection with rural food traditions</li></ul><p><strong>Taste Note:</strong> The combination of crisp or firm baati with smoky, spiced chokha creates a satisfying contrast of textures and flavours.</p>`},
+      {name:"Petha",blurb:"Translucent ash-gourd sweet traditionally associated with Agra",full:`<p><strong>Type:</strong> Traditional Agra sweet</p><p>Petha is a translucent sweet traditionally associated with Agra. It is generally made from ash gourd and prepared with sugar syrup. Over time, many flavours and varieties have become popular.</p><p><strong>What Makes It Special</strong></p><ul><li>Soft, translucent appearance</li><li>Sweet and delicate texture</li><li>Strong association with Agra</li><li>Available in several flavours and forms</li><li>Popular as a traditional souvenir</li></ul><p><strong>Did You Know?</strong> Petha's connection with Agra has made it one of the city's most recognizable culinary specialties.</p>`},
+      {name:"Khurchan",blurb:"Layered milk-and-cream sweet of Uttar Pradesh",full:`<p><strong>Type:</strong> Traditional North Indian sweet</p><p>Khurchan is a traditional milk-based sweet associated with the Uttar Pradesh region. It is prepared by repeatedly collecting and layering the cream that forms while milk is heated, producing delicate layers with a rich, milky taste.</p><p><strong>What Makes It Special</strong></p><ul><li>Made from rich milk and cream layers</li><li>Delicate, slightly chewy texture</li><li>Traditional preparation technique</li><li>Associated with old-style sweet shops and regional food culture</li></ul><p><strong>Taste Note:</strong> Khurchan has a rich dairy flavour and a distinctive layered texture, making it very different from syrup-heavy sweets.</p>`}
+    ],
+    art:[
+      {name:"Chikankari of Lucknow",blurb:"Delicate hand embroidery tradition of Lucknow",full:`<p><strong>Type:</strong> Traditional textile embroidery</p><p>Chikankari is Lucknow's celebrated embroidery tradition. Artisans create delicate patterns on fabric using a range of hand-embroidery techniques, producing elegant floral, geometric, and nature-inspired designs.</p><p><strong>What Makes It Special</strong></p><ul><li>Fine hand embroidery</li><li>Delicate floral and vine motifs</li><li>Traditionally associated with Lucknow</li><li>Practised on garments and textiles</li><li>Detailed craftsmanship requiring patience and skill</li></ul><p><strong>Look Closely:</strong> The beauty of Chikankari lies in its subtle texture. Different stitches create variations in transparency, relief, and pattern across the fabric.</p><p><strong>Why It Matters:</strong> Chikankari represents the skill of generations of artisans and remains an important part of Lucknow's textile identity.</p>`},
+      {name:"Brocade",blurb:"Rich woven textile tradition associated with Varanasi and Banarasi silk",full:`<p><strong>Type:</strong> Traditional woven textile</p><p>Brocade is a richly patterned textile in which decorative designs are woven into the fabric. Uttar Pradesh, especially Varanasi, is famous for its intricate brocade and silk weaving traditions.</p><p><strong>What Makes It Special</strong></p><ul><li>Detailed woven patterns</li><li>Silk and metallic thread traditions</li><li>Floral, geometric, and ornamental motifs</li><li>Strong association with Banarasi textiles</li><li>Used for sarees, ceremonial clothing, and special occasions</li></ul><p><strong>Craft Highlight:</strong> Unlike surface embroidery, the decorative effect of brocade is created through the weaving process itself, requiring considerable technical skill from the weaver.</p>`},
+      {name:"Attar of Kannauj",blurb:"Traditional natural perfume craft using botanical distillation",full:`<p><strong>Type:</strong> Traditional natural perfume craft</p><p>Kannauj is renowned for its traditional attar-making industry. Attar is a concentrated natural perfume traditionally produced by distilling aromatic flowers, herbs, spices, or other botanical materials and capturing their fragrance in a base such as sandalwood oil.</p><p><strong>What Makes It Special</strong></p><ul><li>Traditional copper stills and distillation methods</li><li>Natural botanical ingredients</li><li>Generations of perfume-making knowledge</li><li>Wide range of floral, earthy, spicy, and seasonal fragrances</li><li>Strong association with Kannauj</li></ul><p><strong>Craft Highlight:</strong> Traditional attar production is a slow, skilled process in which the maker carefully controls heat, distillation, and fragrance blending.</p><p><strong>Why It Matters:</strong> Kannauj's perfume heritage connects traditional chemistry, craftsmanship, agriculture, and sensory culture.</p>`},
+      {name:"Wooden Toys of Banaras",blurb:"Colourful handcrafted woodcraft from Varanasi",full:`<p><strong>Type:</strong> Traditional woodcraft</p><p>Varanasi is known for traditional wooden craftwork, including colourful toys and decorative objects. Artisans shape, smooth, paint, and decorate wooden pieces into animals, figures, toys, and other objects.</p><p><strong>What Makes It Special</strong></p><ul><li>Handcrafted wooden forms</li><li>Bright traditional colours and decorative details</li><li>Toys and figures inspired by everyday and cultural themes</li><li>Skills passed through generations</li><li>Connection with Varanasi's wider craft traditions</li></ul><p><strong>Look Closely:</strong> Notice the simplified shapes and vivid painting. The charm of these toys comes from turning ordinary wood into expressive characters and playful forms.</p>`}
+    ],
+    culture:[
+      {name:"Festivals of Uttar Pradesh",blurb:"A diverse festival calendar shaped by faith, seasons and local communities",full:`<p><strong>Overview</strong></p><p>Uttar Pradesh has a diverse festival calendar shaped by religious traditions, local communities, seasonal cycles, and historic cities. Festivals transform streets, temples, riverfronts, and neighbourhoods into vibrant cultural spaces.</p><p><strong>Major Celebrations</strong></p><ul><li>Diwali - celebrated with lamps, prayers, decorations, and festivities across the state</li><li>Holi - especially vibrant in the Braj region around Mathura and Vrindavan</li><li>Ram Navami - celebrated prominently in Ayodhya</li><li>Janmashtami - strongly associated with Krishna traditions in the Braj region</li><li>Dev Deepawali - celebrated in Varanasi with illuminated ghats</li></ul><p><strong>What Makes It Special:</strong> Festivals bring together music, food, decoration, ritual, clothing, storytelling, and community participation, making them an important part of Uttar Pradesh's living heritage.</p>`},
+      {name:"Kumbh Mela",blurb:"Major Hindu pilgrimage and cultural gathering at Prayagraj",full:`<p><strong>Location:</strong> Prayagraj, Uttar Pradesh</p><p><strong>Tradition:</strong> Major Hindu pilgrimage and cultural gathering</p><p>Kumbh Mela is one of the world's largest religious gatherings. In Prayagraj, pilgrims traditionally gather at the Sangam-the meeting point of the Ganga, Yamuna, and the mythical Saraswati-to participate in sacred bathing and religious activities.</p><p><strong>What Makes It Special</strong></p><ul><li>Massive gathering of pilgrims and visitors</li><li>Sacred bathing at the Sangam</li><li>Religious processions and spiritual discourses</li><li>Camps, akharas, music, and devotional traditions</li><li>Temporary city infrastructure created for the gathering</li></ul><p><strong>Cultural Experience:</strong> The Kumbh brings together saints, religious teachers, artists, vendors, travellers, volunteers, and communities from across India, creating a remarkable temporary cultural landscape.</p><p><strong>Did You Know?</strong> The Kumbh tradition has been recognized by UNESCO as an Intangible Cultural Heritage of Humanity.</p>`},
+      {name:"Kathak of Lucknow",blurb:"Graceful Lucknow gharana tradition of North Indian classical dance",full:`<p><strong>Type:</strong> Indian classical dance tradition</p><p>The Lucknow gharana of Kathak is one of the major stylistic traditions of North Indian classical dance. It is known for graceful movement, expressive storytelling, rhythmic footwork, and refined gestures.</p><p><strong>What Makes It Special</strong></p><ul><li>Intricate footwork and rhythm</li><li>Expressive facial gestures</li><li>Spins and controlled movements</li><li>Storytelling through abhinaya</li><li>Strong association with the cultural history of Lucknow</li></ul><p><strong>Why It Matters:</strong> Kathak connects dance with music, poetry, storytelling, and courtly traditions, making it an important part of North India's performing-arts heritage.</p>`},
+      {name:"Ram Leela of Ramnagar",blurb:"Immersive multi-location theatrical retelling of the Ramayana",full:`<p><strong>Location:</strong> Ramnagar, near Varanasi, Uttar Pradesh</p><p><strong>Type:</strong> Traditional theatrical performance</p><p>Ramnagar is famous for its traditional Ram Leela, a large-scale dramatic retelling of episodes from the Ramayana. Performances unfold across different locations, turning the town itself into part of the theatrical setting.</p><p><strong>What Makes It Special</strong></p><ul><li>Traditional dramatic storytelling</li><li>Multi-location performances</li><li>Music, costumes, dialogue, and processions</li><li>Strong community participation</li><li>Deep connection with local religious and cultural traditions</li></ul><p><strong>Cultural Experience:</strong> Instead of watching the story on a conventional stage, audiences move through different settings as the narrative unfolds, creating an immersive form of folk theatre.</p>`}
+    ]
+  },
+  maharashtra:{
+    tagline:"Rock-cut cave temples, Maratha forts, and Mumbai's energy.",
+    desc:   "Maharashtra spans rock-cut cave temples carved over a thousand years ago and the relentless energy of Mumbai today. Maratha forts,classical arts and street food culture all sit within a single, sprawling state.",
+    x:33,y:56.4,
+    heritage:[
+  {
+    name:"Ajanta Caves",
+    blurb:"Rock-cut Buddhist caves renowned for ancient murals and sculpture",
+    full:`<p><strong>Location:</strong> Aurangabad (Chhatrapati Sambhajinagar) district, Maharashtra</p>
+<p><strong>Period:</strong> Approximately 2nd century BCE – 6th century CE</p>
+<p>Carved into a horseshoe-shaped cliff above the Waghora River, the Ajanta Caves are among India's greatest achievements in Buddhist art and architecture. The complex consists of rock-cut monasteries and prayer halls, created over several centuries. Ajanta is particularly famous for its remarkable murals and sculptures, many of which depict episodes from the life of the Buddha and stories from the Jataka tales.</p>
+<p><strong>What Makes It Special</strong></p>
+<ul>
+<li>Rock-cut Buddhist monasteries and prayer halls</li>
+<li>Some of India's finest surviving ancient murals</li>
+<li>Sculptures carved directly into volcanic rock</li>
+<li>Detailed depictions of ancient clothing, jewelry, architecture, and everyday life</li>
+<li>Recognized as a UNESCO World Heritage Site</li>
+</ul>
+<p><strong>Don't Miss:</strong> The Ajanta paintings are the highlight. Look closely at the expressions, jewelry, clothing, and gestures of the figures—the paintings provide an extraordinary window into ancient Indian society.</p>
+<p><strong>Did You Know?</strong> The caves were largely hidden from wider attention for centuries before being brought to modern archaeological attention in the 19th century.</p>`
+  },
+  {
+    name:"Kailash Temple",
+    blurb:"Monolithic rock-cut temple at Ellora, carved top-down from a single rock",
+    full:`<p><strong>Location:</strong> Ellora Caves complex, Chhatrapati Sambhajinagar district, Maharashtra</p>
+<p><strong>Period:</strong> Part of the Ellora complex, mainly 6th–10th century CE</p>
+<p>The most spectacular monument at Ellora, the Kailasa Temple (Cave 16) is a massive temple carved from a single section of living rock. Unlike a conventional temple assembled piece by piece, it was carved downward and outward from the rock itself — one of the world's most ambitious examples of monolithic rock-cut architecture.</p>
+<p><strong>What Makes It Special</strong></p>
+<ul>
+<li>Carved from a single, solid section of rock</li>
+<li>Monumental sculptures depicting Hindu mythology</li>
+<li>Multi-level rock-cut architecture</li>
+<li>Part of the UNESCO World Heritage-listed Ellora complex</li>
+</ul>
+<p><strong>Don't Miss:</strong> Kailasa Temple is the centerpiece of Ellora. Unlike a conventional temple assembled piece by piece, it was carved downward and outward from the rock itself.</p>
+<p><strong>Did You Know?</strong> The Kailasa Temple is one of the world's most ambitious examples of monolithic rock-cut architecture.</p>`,
+    link:"kailasa-temple-ellora.html"
+  },
+  {
+    name:"Ellora Caves",
+    blurb:"Buddhist, Hindu and Jain rock-cut monuments carved over centuries",
+    full:`<p><strong>Location:</strong> Chhatrapati Sambhajinagar district, Maharashtra</p>
+<p><strong>Period:</strong> Approximately 6th–10th century CE</p>
+<p>Ellora is a remarkable rock-cut complex where Buddhist, Hindu, and Jain traditions exist side by side. The caves were excavated over several centuries and demonstrate the remarkable skill of ancient Indian architects and sculptors. The most spectacular monument is the Kailasa Temple, a massive temple carved from a single section of living rock.</p>
+<p><strong>What Makes It Special</strong></p>
+<ul>
+<li>Buddhist, Hindu, and Jain monuments in one complex</li>
+<li>The extraordinary Kailasa Temple</li>
+<li>Monumental sculptures depicting Hindu mythology</li>
+<li>Multi-level rock-cut architecture</li>
+<li>UNESCO World Heritage Site</li>
+</ul>
+<p><strong>Don't Miss:</strong> Kailasa Temple (Cave 16) is the centerpiece. Unlike a conventional temple assembled piece by piece, it was carved downward and outward from the rock itself.</p>
+<p><strong>Did You Know?</strong> The Kailasa Temple is one of the world's most ambitious examples of monolithic rock-cut architecture.</p>`
+  },
+  {
+    name:"Elephanta Caves",
+    blurb:"Island rock-cut temples dedicated to Shiva, home to the Trimurti",
+    full:`<p><strong>Location:</strong> Elephanta Island, Mumbai Harbour</p>
+<p><strong>Period:</strong> Mainly 5th–6th century CE</p>
+<p>Located on an island in Mumbai Harbour, the Elephanta Caves are a magnificent group of rock-cut temples dedicated primarily to Shiva. The caves contain monumental sculptures that explore different aspects of Shiva and Hindu mythology.</p>
+<p><strong>What Makes It Special</strong></p>
+<ul>
+<li>Rock-cut Hindu temple complex</li>
+<li>Monumental sculptures of Shiva</li>
+<li>Located on an island accessible from Mumbai</li>
+<li>Famous for the Trimurti, a colossal three-faced representation of Shiva</li>
+<li>UNESCO World Heritage Site</li>
+</ul>
+<p><strong>Don't Miss:</strong> The Trimurti is the iconic sculpture of Elephanta. Its three faces are traditionally interpreted as representing different aspects of Shiva.</p>
+<p><strong>Did You Know?</strong> The island was known to Portuguese explorers by the name 'Elephanta' because of a large stone elephant sculpture that once stood near the landing area.</p>`
+  },
+  {
+    name:"Kolaba Fort",
+    blurb:"Historic sea fort off Alibag, tied to the Maratha navy",
+    full:`<p><strong>Location:</strong> Alibag, Raigad district, Maharashtra</p>
+<p><strong>Period:</strong> Mainly 17th century</p>
+<p>Standing just offshore from Alibag, Kolaba Fort is a historic sea fort associated with the Maratha navy. Its location allowed it to serve as a defensive stronghold along Maharashtra's Konkan coast. The fort is particularly interesting because its character changes with the tide — during low tide, visitors can walk toward it from the shore.</p>
+<p><strong>What Makes It Special</strong></p>
+<ul>
+<li>Historic coastal fortification</li>
+<li>Associated with Maratha naval power</li>
+<li>Built in the Arabian Sea near Alibag</li>
+<li>Massive stone walls and gateways</li>
+<li>Combination of military and religious features</li>
+</ul>
+<p><strong>Don't Miss:</strong> Look for the fort's entrances, bastions, temples, and carved details while exploring its walls.</p>
+<p><strong>Did You Know?</strong> The changing tides are part of the experience — the route to the fort can become inaccessible when the sea level rises.</p>`
+  },
+  {
+    name:"Raigad Fort",
+    blurb:"Shivaji Maharaj's hilltop capital and coronation site",
+    full:`<p><strong>Location:</strong> Raigad district, Maharashtra</p>
+<p><strong>Period:</strong> Mainly associated with the 17th century</p>
+<p>Rising dramatically above the Sahyadri mountains, Raigad Fort became the capital of Chhatrapati Shivaji Maharaj's kingdom in the 17th century. It was an important centre of administration and military power. Shivaji Maharaj's coronation took place at Raigad in 1674, marking a defining moment in the history of the Maratha kingdom.</p>
+<p><strong>What Makes It Special</strong></p>
+<ul>
+<li>Strategic mountain-top location</li>
+<li>Former capital of the Maratha kingdom</li>
+<li>Associated with Shivaji Maharaj's coronation</li>
+<li>Fortifications, gateways, water systems, and ruins</li>
+<li>Spectacular views of the surrounding Sahyadri landscape</li>
+</ul>
+<p><strong>Don't Miss:</strong> Explore the remains of the royal palace area, market street, Maha Darwaja, and Takmak Tok.</p>
+<p><strong>Explore the Legend:</strong> Imagine Raigad not as ruins, but as a living capital filled with soldiers, administrators, traders, and royal ceremonies.</p>`
+  }
+],
+        culture:[
+  {
+    name:"Marathi Language & Literature",
+    blurb:"Centuries-old literary tradition shaping Maharashtra's culture and thought",
+    full:`<p>Marathi is the principal language of Maharashtra and has a literary tradition stretching back many centuries. The language has played an important role in Maharashtra's religious, philosophical, social, and cultural history.</p>
+<p><strong>Literary Heritage</strong></p>
+<ul>
+<li>Bhakti poetry</li>
+<li>Religious and philosophical writing</li>
+<li>Poetry</li>
+<li>Drama</li>
+<li>Modern fiction and non-fiction</li>
+</ul>
+<p><strong>Influential Tradition</strong></p>
+<p>Saint-poets such as Dnyaneshwar, Namdev, Eknath, and Tukaram played a major role in Maharashtra's Bhakti tradition.</p>
+<p><strong>Why It Matters</strong></p>
+<p>Marathi literature has helped preserve the region's ideas, spiritual traditions, social experiences, and cultural identity across generations.</p>`
+  },
+  {
+    name:"Lavani",
+    blurb:"Vibrant performance form combining music, poetry, rhythm and dance",
+    full:`<p>Lavani is a vibrant traditional performance form of Maharashtra combining music, poetry, rhythm, and expressive dance. Traditionally performed to the powerful beat of the dholki, Lavani is known for its energetic presentation and strong connection with Marathi folk culture.</p>
+<p><strong>What Makes It Special</strong></p>
+<ul>
+<li>Powerful rhythmic music</li>
+<li>Expressive dance movements</li>
+<li>Marathi poetic lyrics</li>
+<li>Distinctive performance style</li>
+<li>Strong connection to folk theatre traditions</li>
+</ul>
+<p><strong>Feel the Rhythm</strong></p>
+<p>The driving beat of the dholki is one of the defining sounds of a Lavani performance.</p>`
+  },
+  {
+    name:"Tamasha",
+    blurb:"Traditional folk theatre blending music, dance, poetry and comedy",
+    full:`<p>Tamasha is a traditional form of Maharashtrian folk theatre that combines music, dance, poetry, comedy, and dramatic performance. It developed into a distinctive entertainment tradition in Maharashtra and has historically been performed in village and public settings.</p>
+<p><strong>What Makes It Special</strong></p>
+<p>A Tamasha performance can bring together: Drama + Music + Dance + Comedy + Poetry.</p>
+<p><strong>Cultural Role</strong></p>
+<p>Its performers have traditionally used entertainment to engage audiences while also commenting on aspects of everyday life and society.</p>`
+  },
+  {
+    name:"Gondhal",
+    blurb:"Ritualistic musical performance combining singing, narration and devotion",
+    full:`<p>Gondhal is a traditional ritualistic musical performance associated with the worship of certain deities and traditionally performed during religious and ceremonial occasions. The performance combines singing, narration, music, and ritual elements, creating an energetic and devotional atmosphere.</p>
+<p><strong>What Makes It Special</strong></p>
+<p>Gondhal demonstrates how Maharashtra's performing arts can connect music, storytelling, spirituality, and community traditions.</p>
+<p><strong>Experience the Tradition</strong></p>
+<p>Rather than being simply a musical performance, Gondhal forms part of a larger ceremonial and devotional tradition.</p>`
+  }
+],
+    art:[
+  {
+    name:"Warli Painting",
+    blurb:"Tribal art of simple geometric forms depicting village life and nature",
+    full:`<p>Warli painting is a traditional art form associated with the Warli tribal communities of Maharashtra, particularly the northern parts of the state. Traditionally created using simple geometric forms such as circles, triangles, squares, and lines, Warli paintings depict scenes of village life, farming, hunting, celebrations, rituals, animals, and nature.</p>
+<p><strong>The Signature Style</strong></p>
+<p>A typical Warli composition uses simple white figures against an earthy background, creating a striking visual language from minimal shapes.</p>
+<p><strong>Why It Matters</strong></p>
+<p>Warli art is more than decoration — it records community life, traditions, beliefs, and the relationship between people and nature.</p>
+<p><strong>Look Closely</strong></p>
+<p>A circle can represent the sun or moon, while triangles and lines can be combined to create remarkably expressive human figures.</p>`
+  },
+  {
+    name:"Textile Arts",
+    blurb:"Rich weaving and embroidery traditions, including celebrated Paithani silk",
+    full:`<p>Maharashtra has a rich textile tradition expressed through weaving, embroidery, dyeing, and decorative techniques. The state's textile heritage includes distinctive traditions such as Paithani weaving, known for its silk fabric, intricate motifs, and characteristic borders and pallus.</p>
+<p><strong>What Makes It Special</strong></p>
+<ul>
+<li>Handcrafted weaving traditions</li>
+<li>Intricate motifs inspired by nature</li>
+<li>Traditional silk and cotton textiles</li>
+<li>Regional variations in patterns and techniques</li>
+<li>Strong connection to festivals and ceremonial clothing</li>
+</ul>
+<p><strong>Signature Craft: Paithani</strong></p>
+<p>Paithani textiles are particularly associated with Paithan and are celebrated for their elaborate motifs, rich colors, and skilled handloom craftsmanship.</p>`
+  },
+  {
+    name:"Metal Work",
+    blurb:"Traditional metalworking crafting utensils, ornaments and religious items",
+    full:`<p>Maharashtra's craft traditions include a variety of metalworking techniques used to create utensils, decorative objects, religious items, ornaments, and functional objects. Traditional artisans transform metals through processes such as casting, hammering, engraving, and shaping.</p>
+<p><strong>Why It Matters</strong></p>
+<p>Metal craft demonstrates how traditional knowledge combines material science, craftsmanship, design, and cultural symbolism.</p>`
+  },
+  {
+    name:"Handicrafts",
+    blurb:"Diverse handmade crafts in wood, metal, leather, clay, bamboo and fibre",
+    full:`<p>Maharashtra's handicraft traditions reflect the diversity of its communities and regions. Artisans work with materials such as wood, metal, leather, textiles, clay, bamboo, and natural fibres to create both functional and decorative objects.</p>
+<p><strong>What Makes Them Special</strong></p>
+<ul>
+<li>Handmade rather than mass-produced</li>
+<li>Regional styles and techniques</li>
+<li>Often inspired by nature and everyday life</li>
+<li>Skills passed between generations</li>
+<li>Important source of livelihood for artisan communities</li>
+</ul>
+<p><strong>The Human Touch</strong></p>
+<p>Every handmade object carries the technique, experience, and creativity of the artisan who created it.</p>`
+  }
+],
+    food:[
+  {
+    name:"Misal Pav",
+    blurb:"Spicy sprouted-legume curry topped with farsan, served with pav",
+    full:`<p><strong>Type:</strong> Spicy Maharashtrian street food</p>
+<p>Misal Pav is one of Maharashtra's most beloved dishes. At its heart is a spicy preparation of sprouted legumes, usually served with a flavorful curry called kat or rassa. It is topped with ingredients such as farsan, onions, coriander, and lemon and traditionally enjoyed with soft pav.</p>
+<p><strong>What Makes It Special</strong></p>
+<p>The dish is all about contrast—spicy curry, crunchy farsan, fresh onions, tangy lemon, and soft bread come together in one plate.</p>
+<p><strong>Try the Challenge:</strong> How much spice can you handle?</p>`
+  },
+  {
+    name:"Pav Bhaji",
+    blurb:"Buttery mashed-vegetable curry with toasted pav, a Mumbai icon",
+    full:`<p><strong>Type:</strong> Popular Mumbai street food</p>
+<p>Pav Bhaji is a rich vegetable preparation made by cooking and mashing vegetables with a blend of spices, butter, and tomato. It is served with buttered and toasted pav. Though it has become popular across India, Mumbai played a major role in shaping pav bhaji into the iconic street food it is today.</p>
+<p><strong>What Makes It Special</strong></p>
+<ul>
+<li>Rich, spicy vegetable mixture</li>
+<li>Butter-toasted pav</li>
+<li>Often served with chopped onions and lemon</li>
+<li>A classic part of Mumbai's street-food culture</li>
+</ul>
+<p><strong>Fun Fact:</strong> The dish developed as a quick and filling meal associated with Mumbai's fast-paced working culture.</p>`
+  },
+  {
+    name:"Shrikhand",
+    blurb:"Smooth strained-yogurt dessert with cardamom and saffron",
+    full:`<p><strong>Type:</strong> Traditional Maharashtrian dessert</p>
+<p>Shrikhand is a smooth, creamy dessert prepared from strained yogurt, traditionally flavored with sugar, cardamom, saffron, and nuts. It is often served during festivals and celebrations and is especially popular alongside puri.</p>
+<p><strong>What Makes It Special</strong></p>
+<p>Its thick, velvety texture and fragrant saffron-cardamom flavor make it one of Maharashtra's signature traditional sweets.</p>
+<p><strong>Taste Note:</strong> Sweet, creamy, aromatic, and refreshing when served chilled.</p>`
+  },
+  {
+    name:"Basundi",
+    blurb:"Slow-reduced sweetened milk dessert with saffron and nuts",
+    full:`<p><strong>Type:</strong> Traditional milk-based dessert</p>
+<p>Basundi is prepared by slowly reducing milk until it becomes thick and rich. It is sweetened and flavored with cardamom, saffron, and nuts.</p>
+<p><strong>What Makes It Special</strong></p>
+<p>Basundi showcases a traditional Indian technique of transforming a simple ingredient—milk—into a rich festive dessert.</p>`
+  },
+  {
+    name:"Thalipeeth",
+    blurb:"Spiced multi-grain flatbread, crisp on the outside",
+    full:`<p><strong>Type:</strong> Traditional Maharashtrian flatbread</p>
+<p>Thalipeeth is a savory, spiced flatbread prepared using a flour mixture that may include millets, rice, wheat, gram, and other grains or pulses, depending on the recipe. It is commonly mixed with onions, herbs, spices, and other ingredients and cooked until crisp on the outside.</p>
+<p><strong>What Makes It Special</strong></p>
+<p>Thalipeeth represents Maharashtra's tradition of creating nutritious and flavorful meals from a variety of grains.</p>
+<p><strong>Food Heritage:</strong> Its versatility allows different families and regions to have their own variations.</p>`
+  }
+],
+  },
+  mp:{
+    tagline:"India's 'tiger state' of carved temples and ancient stupas.",
+    desc:   "Known as India's 'tiger state', Madhya Pradesh holds some of the subcontinent's finest temple carving and its oldest painted caves, all set within vast, forested plateaus.",
+    x:39,y:49,
+    heritage:[
+      {name:"Khajuraho Group of Monuments",blurb:"Intricate Chandela-era temples and UNESCO-listed stone carvings",full:`<p><strong>Location:</strong> Khajuraho, Madhya Pradesh</p><p><strong>Period:</strong> 10th–11th century</p><p>Built by the Chandela dynasty, the Khajuraho temples are renowned for soaring spires and elaborate stone carvings depicting deities, daily life, and human emotion.</p><p><strong>What Makes It Special:</strong> Intricate sculptural friezes, advanced Nagara-style architecture, and Western, Eastern, and Southern temple groups.</p><p><strong>Don't Miss:</strong> Kandariya Mahadeva Temple, the largest and most detailed temple in the complex.</p><p><strong>Did You Know?</strong> The temples were rediscovered by a British surveyor in the 19th century after centuries surrounded by forest.</p>`},
+      {name:"Sanchi Stupa",blurb:"Ancient Buddhist stupa commissioned by Emperor Ashoka",full:`<p><strong>Location:</strong> Sanchi, Madhya Pradesh</p><p><strong>Period:</strong> 3rd century BCE onward</p><p>Sanchi's Great Stupa was commissioned by Emperor Ashoka and expanded over succeeding centuries. It is among India's oldest surviving stone structures and a UNESCO World Heritage Site.</p><p><strong>What Makes It Special:</strong> Its hemispherical stupa, carved toranas, Jataka tales, and Buddhist symbolism.</p><p><strong>Don't Miss:</strong> The four gateways, which tell stories through intricate early Indian relief sculpture.</p>`},
+      {name:"Gwalior Fort",blurb:"Commanding hilltop fort with Rajput, Mughal, and later architectural layers",full:`<p><strong>Location:</strong> Gwalior, Madhya Pradesh</p><p><strong>Period:</strong> 8th century onward</p><p>Perched on a sandstone hill, Gwalior Fort has been controlled by successive dynasties for more than a thousand years. Its palaces, temples, and waterworks reflect layers of Rajput and later rule.</p><p><strong>What Makes It Special:</strong> Massive fortifications, Man Singh Palace's glazed tile decoration, and ancient rock-cut Jain sculptures.</p><p><strong>Don't Miss:</strong> The vivid blue and yellow tilework on Man Singh Palace.</p>`},
+      {name:"Bhimbetka Rock Shelters",blurb:"Prehistoric rock shelters preserving thousands of years of paintings",full:`<p><strong>Location:</strong> Near Bhopal, Madhya Pradesh</p><p>The rock shelters of Bhimbetka contain paintings created over thousands of years, from the Mesolithic period through later historical times.</p><p><strong>What Makes It Special:</strong> Hunting, dancing, and animal paintings, natural rock shelters, and a continuous record of human habitation.</p><p><strong>Don't Miss:</strong> Layered paintings where newer images were sometimes painted over older ones.</p><p><strong>Did You Know?</strong> The surrounding forest landscape closely resembles scenes shown in some of the paintings.</p>`},
+      {name:"Mandu",blurb:"Malwa Sultanate capital known for palaces, lakes, and monsoon views",full:`<p><strong>Location:</strong> Mandu, Madhya Pradesh</p><p><strong>Period:</strong> 14th–16th century</p><p>Mandu was the capital of the Malwa Sultanate, known for palaces, gateways, and water structures adapted to its hilltop plateau. Its monuments are closely tied to the legends of Baz Bahadur and Rani Roopmati.</p><p><strong>What Makes It Special:</strong> Afghan and Indian architectural styles, sophisticated water harvesting, and dramatic monsoon views.</p><p><strong>Don't Miss:</strong> Jahaz Mahal, which appears to float between two reservoirs.</p>`}
+    ],
+    food:[
+      {name:"Poha Jalebi",blurb:"Indore's traditional breakfast pairing savoury poha with sweet jalebi",full:`<p><strong>Type:</strong> Traditional Indore breakfast</p><p>Poha is flattened rice cooked with mustard seeds, onions, and spices. In Indore it is traditionally paired with hot, syrupy jalebi and topped with sev, coriander, and lemon.</p><p><strong>Cultural Note:</strong> Poha-jalebi is a daily ritual found at street stalls throughout the city.</p>`},
+      {name:"Bhutte ka Kees",blurb:"Malwa snack made from grated corn, milk, and spices",full:`<p><strong>Type:</strong> Traditional Malwa snack</p><p>Bhutte ka Kees is made from freshly grated corn cooked with milk, spices, and a mustard-seed tempering. It is often garnished with coconut and coriander.</p><p><strong>Taste Note:</strong> It balances the natural sweetness of corn with warm spices and light milky richness.</p>`},
+      {name:"Dal Bafla",blurb:"Boiled and baked wheat dumplings served with spiced dal and ghee",full:`<p><strong>Type:</strong> Traditional Malwa meal</p><p>Dal Bafla is a hearty meal of wheat dumplings that are boiled and then baked or roasted, served with rich spiced lentils, ghee, and chutneys.</p><p><strong>Taste Note:</strong> The firm roasted bafla soaks up the spiced dal and ghee.</p>`},
+      {name:"Malpua",blurb:"Golden sweet pancakes soaked in fragrant sugar syrup",full:`<p><strong>Type:</strong> Traditional sweet</p><p>Malpua is made from a sweetened batter fried until golden and often soaked in sugar syrup. It may be flavoured with cardamom or fennel and served with rabri.</p><p><strong>Did You Know?</strong> It is commonly prepared during festivals and celebrations.</p>`}
+    ],
+    art:[
+      {name:"Gond Painting",blurb:"Dot-and-line tribal painting rooted in Gond storytelling",full:`<p><strong>Type:</strong> Traditional tribal art form</p><p>Gond painting originates with the Gond community and uses intricate patterns of lines and dots to depict nature, folklore, animals, trees, and folk deities.</p><p><strong>Why It Matters:</strong> It carries forward oral traditions and tribal cosmology through a visual art form recognised far beyond its regional origins.</p>`},
+      {name:"Chanderi Weaving",blurb:"Lightweight, sheer handwoven fabric from Chanderi",full:`<p><strong>Type:</strong> Traditional handloom textile</p><p>Chanderi is famous for lightweight, sheer fabric made from cotton, silk, or a blend of both, with delicate zari and motif work.</p><p><strong>Craft Highlight:</strong> Its subtle sheen and delicate texture come from a traditional process passed down through generations.</p>`},
+      {name:"Maheshwari Sarees",blurb:"Reversible handloom sarees with distinctive borders from Maheshwar",full:`<p><strong>Type:</strong> Traditional handloom textile</p><p>Maheshwari sarees are known for contrasting borders, reversible weaving, stripes, and checks. They are historically associated with the Holkar royal family.</p><p><strong>Craft Highlight:</strong> Both sides can be worn, a hallmark of the fabric's traditional construction.</p>`},
+      {name:"Bagh Print",blurb:"Natural-dye hand block printing from the town of Bagh",full:`<p><strong>Type:</strong> Traditional hand block printing</p><p>Bagh print uses hand-carved wooden blocks and natural dyes to create geometric and floral patterns on fabric.</p><p><strong>What Makes It Special:</strong> Earthy reds and blacks, traditional washing in the Bagh river's waters, and precision achieved entirely by hand.</p>`}
+    ],
+    culture:[
+      {name:"Festivals of Madhya Pradesh",blurb:"A calendar blending tribal, religious, and classical traditions",full:`<p>Madhya Pradesh's festival calendar reflects its diverse communities, tribal traditions, and historic cities through music, dance, ritual, and celebration.</p><p><strong>Major Celebrations:</strong> Diwali, Navratri, Bhagoria, Maha Shivratri, and the Khajuraho Dance Festival.</p><p><strong>What Makes It Special:</strong> These festivals combine tribal, religious, and classical traditions, reflecting the state's cultural diversity.</p>`},
+      {name:"Ujjain Simhastha Kumbh",blurb:"Major pilgrimage and cultural gathering held along the Shipra",full:`<p><strong>Location:</strong> Ujjain, Madhya Pradesh</p><p>Ujjain hosts the Simhastha Kumbh, one of the four sites of the Kumbh Mela cycle. Pilgrims gather along the Shipra River for sacred bathing, processions, and spiritual discourses.</p><p><strong>Did You Know?</strong> Ujjain is also home to the Mahakaleshwar Jyotirlinga.</p>`},
+      {name:"Tansen Music Festival",blurb:"Gwalior festival celebrating Hindustani classical music",full:`<p><strong>Location:</strong> Gwalior, Madhya Pradesh</p><p>Held annually, the Tansen Music Festival honours the legendary musician Tansen and brings classical musicians together near his memorial.</p><p><strong>Why It Matters:</strong> The festival preserves the legacy of one of Indian classical music's most important figures.</p>`},
+      {name:"Tribal Dance Traditions",blurb:"Gond, Bhil, and Baiga dances linked to festivals and harvests",full:`<p>Madhya Pradesh's Gond, Bhil, and Baiga communities maintain distinct dance traditions performed during festivals, harvests, and community gatherings.</p><p><strong>What Makes It Special:</strong> Traditional instruments, colourful costumes, seasonal cycles, and strong community participation.</p><p><strong>Cultural Experience:</strong> These are living traditions forming an integral part of community celebration and identity.</p>`}
+    ]
+  },
+  wb:{
+    tagline:"Ganges delta culture of festivals, art, and literature.",
+    desc:   "West Bengal grew up on the banks of the Hooghly — a state of intellectual ferment, colonial-era grandeur and the joyous chaos of Durga Puja, where art, politics and food have always mixed freely.",
+    x:69.6,y:42.1,
+    heritage:items(["Victoria Memorial|Marble colonial monument and museum in Kolkata","Howrah Bridge|Iconic cantilever bridge over the Hooghly","Belur Math|Ramakrishna Mission's serene riverside headquarters","Hazarduari Palace|'Palace of a Thousand Doors' in Murshidabad","Sundarbans|World's largest mangrove forest, home to Bengal tigers","Bishnupur Terracotta Temples|Carved brick temples of the Malla dynasty","Darjeeling Himalayan Railway|UNESCO 'toy train' through tea hills","Jorasanko Thakur Bari|Tagore family's ancestral Kolkata mansion"]),
+    culture:items(["Durga Puja|Kolkata's grandest festival with elaborate pandals","Kantha Embroidery|Running-stitch quilting turned fine embroidery","Rabindra Sangeet|Songs composed by Rabindranath Tagore","Baul Tradition|Wandering mystic folk singers of rural Bengal","Patachitra|Narrative scroll art paired with sung stories","Bengali Literature|Home to Tagore and a rich literary tradition","Darjeeling Tea Gardens|Colonial-era hillside tea estate culture","Dokra Craft|Ancient lost-wax tribal metal casting"]),
+    art:items(["Rabindra Nritya|Dance style set to Tagore's compositions","Chhau Dance|Masked martial dance-drama of Purulia","Baul Singing|Soulful folk music of wandering minstrels","Gambhira|Satirical folk dance-drama from North Bengal","Kirtan|Devotional call-and-response singing","Jhumur|Tribal folk dance of the Bengal-Jharkhand belt","Alkap|Traditional rural musical theatre form","Bhawaiya|Folk songs of the northern Bengal plains"]),
+    food:items(["Machher Jhol|Classic Bengali fish curry with mustard","Rosogolla|Spongy syrup-soaked cheese ball, a Bengali icon","Shorshe Ilish|Hilsa fish cooked in pungent mustard gravy","Sandesh|Delicate sweet made from fresh chhena cheese","Kosha Mangsho|Slow-cooked, richly spiced mutton curry","Aloo Posto|Potatoes cooked in a poppy-seed paste","Mishti Doi|Sweetened, caramelized set yogurt","Puchka|Bengal's version of pani puri street snack"])
+  },
+  gujarat:{
+    tagline:"Stepwells, Navratri nights, and Gandhi's home ground.",
+    desc:"Gujarat pairs a proud mercantile history with deep religious and craft traditions, from Rani ki Vav's carved stepwell to the nine nights of Garba during Navratri.",
+    x:14.7,y:51.0,
+    heritage:items(["Rani ki Vav|Ornate stepwell, a UNESCO World Heritage site","Sun Temple, Modhera|11th-century temple aligned to the equinox sun","Sabarmati Ashram|Gandhi's riverside home during the freedom struggle","Somnath Temple|One of the twelve sacred Jyotirlinga shrines","Champaner-Pavagadh|Archaeological park of Islamic and Hindu monuments","Lothal|Harappan-era dockyard, among the earliest known ports","Statue of Unity|World's tallest statue, honouring Sardar Patel","Uparkot Fort|Ancient hilltop fortress with rock-cut caves"]),
+    culture:items(["Navratri Garba|Nine nights of circular dance for the goddess","Patola Weaving|Double-ikat silk sarees of Patan","Bandhani Tie-Dye|Intricate dot-pattern tie-dye textile art","Rann Utsav|Winter festival on the white salt desert","Kutch Embroidery|Intricate mirror-work embroidery","Uttarayan Kite Festival|Skies filled with kites every January","Gir Forest|Last wild home of the Asiatic lion","Duha-Chhand Poetry|Traditional Gujarati oral poetry"]),
+    art:items(["Garba|Circular folk dance around a lamp or idol","Dandiya Raas|Stick dance performed in pairs during Navratri","Bhavai|Traditional performance balancing pots while dancing","Padhar Dance|Fisherfolk community's coastal folk dance","Rajwadi Geet|Royal-era folk songs of Saurashtra","Tippani Dance|Women's rhythmic dance using wooden sticks","Siddi Dhamal|Afro-Gujarati drum and dance tradition","Bhajan Sandhya|Evening devotional singing gatherings"]),
+    food:items(["Dhokla|Steamed, spongy fermented gram-flour cake","Thepla|Spiced flatbread often carried for travel","Undhiyu|Winter mixed-vegetable dish, slow-cooked upside down","Khandvi|Rolled gram-flour and yogurt savory bites","Fafda Jalebi|Crispy gram-flour strips with sweet jalebi","Gujarati Thali|Elaborate sweet-savory vegetarian platter","Khaman|Soft, tangy steamed chickpea-flour cake","Sev Usal|Sprouted lentil curry topped with crunchy sev"])
+  },
+  goa:{
+    tagline:"Portuguese-era churches, spice coasts, and beach culture.",
+    desc:"Once a Portuguese colony for over four centuries, Goa fuses Konkani roots with European architecture, seafood-driven cuisine and a laid-back coastal rhythm found nowhere else in India.",
+    x:20.5,y:72,
+    heritage:items(["Basilica of Bom Jesus|Baroque church holding St. Francis Xavier's relics","Se Cathedral|Largest church in Asia, built by the Portuguese","Fort Aguada|17th-century Portuguese sea fort with a lighthouse","Chapora Fort|Hilltop fort overlooking the Chapora river mouth","Reis Magos Fort|Restored fort and gallery across the Mandovi","Basilica of Mae de Deus|Neo-Gothic church near Saligao","Old Goa Churches|UNESCO cluster of Portuguese colonial churches","Naval Aviation Museum|India's only museum on naval aviation"]),
+    culture:items(["Goan Carnival|Colourful pre-Lenten street parade","Zagor|Traditional community night-theatre performance","Feni Distilling|Cashew or coconut spirit unique to Goa","Azulejo Tilework|Portuguese-style painted tile art","Goan Catholic Weddings|Fusion of Portuguese and Konkani customs","Shigmo Festival|Spring folk festival with vibrant processions","Konkani Language Culture|Distinct coastal linguistic identity","Portuguese Architecture|Pastel-coloured colonial houses"]),
+    art:items(["Dekhni|Dance-drama blending Goan and Konkani themes","Fugdi|Women's circular folk dance, often devotional","Mando|Melancholic Goan-Portuguese love ballads","Dhalo|Women's folk dance performed during winter nights","Corridinho|Portuguese-origin couple's folk dance","Goan Trance Scene|Anjuna's legacy as a party music hub","Konkani Folk Songs|Traditional songs in the local tongue","Zagor Performance|Ritual night-long folk drama"]),
+    food:items(["Fish Curry Rice|Coconut-based fish curry, Goa's daily staple","Vindaloo|Fiery Portuguese-Goan pork curry with vinegar","Bebinca|Layered coconut-milk sweet, Goa's signature dessert","Prawn Balchão|Tangy, spicy pickled prawn curry","Sorpotel|Rich pork offal curry with vinegar and spice","Poi Bread|Soft, hollow Goan bread baked fresh daily","Xacuti|Coconut-and-spice curry with roasted masala","Cafreal|Green spiced marinated chicken, pan-fried"])
+  }
+};
+
+// Lighter entries — tagline only, categories shown as "coming soon"
+const OTHER = {
+  andhra:{name:"Andhra Pradesh",x:59.5,y:69.3,tagline:"Home to Tirupati's golden temple and the port city of Vizag."},
+  arunachal:{name:"Arunachal Pradesh",x:89.6,y:30.6,tagline:"India's easternmost state of Himalayan monasteries and tribal diversity."},
+  assam:{name:"Assam",x:81.9,y:37.4,tagline:"Land of tea gardens, the Brahmaputra, and one-horned rhinos."},
+  bihar:{name:"Bihar",x:63.4,y:34.6,tagline:"Birthplace of Buddhism's enlightenment at Bodh Gaya and ancient Nalanda."},
+  chhattisgarh:{name:"Chhattisgarh",x:58.7,y:51.6,tagline:"Forested tribal heartland of waterfalls and ancient temples."},
+  haryana:{name:"Haryana",x:32.5,y:26.5,tagline:"Agricultural plains state ringing the capital, rooted in Mahabharata lore."},
+  himachal:{name:"Himachal Pradesh",x:39.4,y:17.7,tagline:"Himalayan hill state of pine forests, valleys and colonial hill towns."},
+  jharkhand:{name:"Jharkhand",x:61.1,y:42.8,tagline:"Mineral-rich plateau state of waterfalls and tribal heritage."},
+  karnataka:{name:"Karnataka",x:29,y:74,tagline:"Home to Mysore's palaces, Hampi's ruins, and Bengaluru's tech boom."},
+  manipur:{name:"Manipur",x:85,y:45,tagline:"Northeastern jewel of Loktak Lake and classical Manipuri dance."},
+  meghalaya:{name:"Meghalaya",x:67,y:45,tagline:"Living root bridges and the wettest place on Earth, Cherrapunji."},
+  mizoram:{name:"Mizoram",x:83,y:49,tagline:"Rolling green hills and the vibrant Chapchar Kut festival."},
+  nagaland:{name:"Nagaland",x:87,y:41,tagline:"Land of the Hornbill Festival and sixteen distinct Naga tribes."},
+  odisha:{name:"Odisha",x:57,y:56.4,tagline:"Coastal state of the Sun Temple at Konark and the Jagannath Temple, Puri."},
+  sikkim:{name:"Sikkim",x:77,y:39,tagline:"Himalayan state at the foot of Kangchenjunga, India's first fully organic state."},
+  telangana:{name:"Telangana",x:56.4,y:60.5,tagline:"Home to Hyderabad's Charminar, biryani, and Golconda Fort."},
+  tripura:{name:"Tripura",x:83.8,y:42.8,tagline:"Hill state of the ancient Tripura Sundari Temple and bamboo craft."},
+  uttarakhand:{name:"Uttarakhand",x:45.6,y:23.1,tagline:"Himalayan land of the Char Dham pilgrimage and yoga capital Rishikesh."},
+  jk:{name:"Jammu & Kashmir",x:19.5,y:19,tagline:"Himalayan paradise of Dal Lake, Mughal gardens, and snow peaks."},
+  ladakh:{name:"Ladakh",x:38.6,y:5.4,tagline:"High-altitude desert of Buddhist monasteries and dramatic mountain passes."},
+  delhi:{name:"Delhi",x:33.2,y:27.9,tagline:"India's capital, layered with Mughal monuments and modern government buildings."},
+  chandigarh:{name:"Chandigarh",x:30.9,y:23.8,tagline:"India's first planned city, designed by architect Le Corbusier."},
+  puducherry:{name:"Puducherry",x:44.8,y:81.5,tagline:"Former French colony of pastel streets and seaside promenades."},
+  lakshadweep:{name:"Lakshadweep",x:4.6,y:81.5,tagline:"Coral-atoll archipelago of turquoise lagoons in the Arabian Sea."},
+  andaman:{name:"Andaman & Nicobar Islands",x:89.6,y:84.2,tagline:"Remote island chain of coral reefs and the colonial Cellular Jail."},
+  dnhdd:{name:"Dadra & Nagar Haveli and Daman & Diu",x:4,y:58,tagline:"Small coastal union territory with Portuguese-era forts."}
+};
+
+const FEATURED_NAMES = {
+  rajasthan:"Rajasthan", kerala:"Kerala", punjab:"Punjab", tamilnadu:"Tamil Nadu",
+  up:"Uttar Pradesh", maharashtra:"Maharashtra", mp:"Madhya Pradesh", wb:"West Bengal",
+  gujarat:"Gujarat", goa:"Goa"
+};
+
+const UP_ITEM_IMAGES = {
+  "Varanasi Ghats":"assets/WhatsApp Image 2026-09-05 at 10.51.56 PM.jpeg",
+  "Jhansi Fort":"assets/WhatsApp Image 2026-09-05 at 10.51.55 PM (1).jpeg",
+  "Baati Chokha":"assets/WhatsApp Image 2026-09-05 at 10.51.46 PM.jpeg",
+  "Petha":"assets/WhatsApp Image 2026-09-05 at 10.51.47 PM.jpeg",
+  "Brocade":"assets/WhatsApp Image 2026-09-05 at 10.51.49 PM.jpeg",
+  "Attar of Kannauj":"assets/WhatsApp Image 2026-09-05 at 10.51.52 PM.jpeg",
+  "Wooden Toys of Banaras":"assets/WhatsApp Image 2026-09-05 at 10.51.50 PM.jpeg",
+  "Festivals of Uttar Pradesh":"assets/WhatsApp Image 2026-09-05 at 10.51.53 PM.jpeg",
+  "Kumbh Mela":"assets/WhatsApp Image 2026-09-05 at 10.51.55 PM.jpeg"
+};
+
+const MP_ITEM_IMAGES = {
+  "Khajuraho Group of Monuments":"assets/WhatsApp Image 2026-09-05 at 11.25.28 PM (1).jpeg",
+  "Sanchi Stupa":"assets/WhatsApp Image 2026-09-05 at 11.25.28 PM.jpeg",
+  "Mandu":"assets/WhatsApp Image 2026-09-05 at 11.12.17 PM (1).jpeg",
+  "Bhimbetka Rock Shelters":"assets/WhatsApp Image 2026-09-05 at 11.12.17 PM (2).jpeg",
+  "Gwalior Fort":"assets/WhatsApp Image 2026-09-05 at 11.12.18 PM.jpeg",
+  "Poha Jalebi":"assets/WhatsApp Image 2026-09-05 at 11.12.15 PM.jpeg",
+  "Bhutte ka Kees":"assets/WhatsApp Image 2026-09-05 at 11.12.14 PM (1).jpeg",
+  "Dal Bafla":"assets/WhatsApp Image 2026-09-05 at 11.12.14 PM.jpeg",
+  "Malpua":"assets/WhatsApp Image 2026-09-05 at 11.12.13 PM.jpeg",
+  "Chanderi Weaving":"assets/WhatsApp Image 2026-09-05 at 11.12.15 PM (2).jpeg",
+  "Maheshwari Sarees":"assets/WhatsApp Image 2026-09-05 at 11.12.15 PM (1).jpeg",
+  "Ujjain Simhastha Kumbh":"assets/WhatsApp Image 2026-09-05 at 11.12.16 PM (2).jpeg",
+  "Festivals of Madhya Pradesh":"assets/WhatsApp Image 2026-09-05 at 11.12.16 PM.jpeg",
+  "Tribal Dance Traditions":"assets/WhatsApp Image 2026-09-05 at 11.12.17 PM.jpeg",
+  "Gond Painting":"assets/WhatsApp Image 2026-09-05 at 11.25.29 PM.jpeg",
+  "Tansen Music Festival":"assets/WhatsApp Image 2026-09-05 at 11.25.28 PM (2).jpeg"
+};
+
+const RECENT_ITEM_IMAGES = {
+  "Dal Baati Churma":"assets/WhatsApp Image 2026-09-07 at 9.34.57 PM (1).jpeg",
+  "Gatte Ki Sabzi":"assets/WhatsApp Image 2026-09-07 at 9.34.57 PM.jpeg",
+  "Ghewar":"assets/ghewar.jpeg",
+  "Basundi":"assets/basundi.jpeg",
+  "Pav Bhaji":"assets/pavbhaji.jpeg",
+  "Misal Pav":"assets/misal pav.jpeg",
+  "Shrikhand":"assets/shrikhand.jpeg",
+  "Thalipeeth":"assets/thalipeeth.jpeg",
+  "Ajanta Caves":"assets/ajanta caves.jpeg",
+  "Kailash Temple":"assets/lailash temple.jpeg",
+  "Ellora Caves":"assets/ellora caves.jpeg",
+  "Elephanta Caves":"assets/elephant caves.jpeg",
+  "Kolaba Fort":"assets/kolaba fort.jpeg",
+  "Raigad Fort":"assets/raigarh fort.jpeg",
+  "Marathi Language & Literature":"assets/marathi literature.jpeg",
+  "Lavani":"assets/lavani.jpeg",
+  "Tamasha":"assets/tamasha.jpeg",
+  "Gondhal":"assets/gondhal.jpeg",
+  "Warli Painting":"assets/warli painting.jpeg",
+  "Textile Arts":"assets/textile artist.jpeg",
+  "Metal Work":"assets/metal works.jpeg",
+  "Handicrafts":"assets/handicraft.jpeg",
+  "Ker Sangri":"assets/WhatsApp Image 2026-09-07 at 9.34.53 PM.jpeg",
+  "Taj Mahal":"assets/tajmahal.jpg",
+  "Bagh Print":"assets/baghpriting.jpg",
+  "Fatehpur Sikri":"assets/fatehpur shikri.jpg",
+  "Sarnath":"assets/sarnath.jpg",
+  "Banarasi Paan":"assets/bnarasi pan.jpeg",
+  "Ram Leela of Ramnagar":"assets/ramleela.jpeg",
+  "Rajput Paintings":"assets/WhatsApp Image 2026-09-07 at 9.34.58 PM.jpeg",
+  "Ghoomar":"assets/ghoomar.jpg",
+  "Kalbeliya":"assets/kalbeliya.jpg",
+  "Kathputli":"assets/kathputli.jpeg",
+  "Phad Painting":"assets/padh painting.jpeg",
+  "Traditional Musical Instruments - Shehnai & Dholak":"assets/WhatsApp Image 2026-09-07 at 9.34.58 PM (2).jpeg",
+  "Jal Mahal":"assets/WhatsApp Image 2026-09-07 at 9.34.59 PM.jpeg",
+  "Hawa Mahal":"assets/WhatsApp Image 2026-09-07 at 9.34.59 PM (1).jpeg",
+  "Jantar Mantar":"assets/WhatsApp Image 2026-09-07 at 9.34.59 PM (2).jpeg",
+  "Chittorgarh Fort":"assets/chittorgarh.jpeg",
+  "Amber Fort":"assets/WhatsApp Image 2026-09-07 at 9.35.00 PM (1).jpeg",
+  "Mohiniyattam":"assets/WhatsApp Image 2026-09-07 at 9.35.00 PM (2).jpeg",
+  "Chikankari of Lucknow":"assets/WhatsApp Image 2026-09-07 at 9.35.01 PM (1).jpeg",
+  "Kathak of Lucknow":"assets/WhatsApp Image 2026-09-07 at 9.35.01 PM (2).jpeg",
+  "Petha":"assets/petha.jpeg",
+  "Khurchan":"assets/khurchan.jpg",
+};
+
+function getItemImage(state, item, size){
+  const seed = encodeURIComponent(state.name + '-' + item.name);
+  const image = item.image || RECENT_ITEM_IMAGES[item.name] ||
+    (state.name === 'Uttar Pradesh' && UP_ITEM_IMAGES[item.name]) ||
+    (state.name === 'Madhya Pradesh' && MP_ITEM_IMAGES[item.name]);
+  return image || `https://picsum.photos/seed/${seed}/${size}`;
+}
+
+/* ---------------- HERO CAROUSEL ---------------- */
+(function(){
+  const track  = document.getElementById('hcTrack');
+  const root   = document.getElementById('heroCarousel');
+  const dotsEl = document.getElementById('hcDots');
+  const prevBtn = document.getElementById('hcPrev');
+  const nextBtn = document.getElementById('hcNext');
+  const slides = track.children.length;
+
+  const AUTOPLAY_MS = 5000;
+  let index = 0;
+  let timer = null;
+
+  for (let i = 0; i < slides; i++){
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'hc-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    dot.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(dot);
+  }
+  const dots = Array.from(dotsEl.children);
+
+  function render(){
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  }
+  function goTo(i){ index = (i + slides) % slides; render(); restart(); }
+  function next(){ goTo(index + 1); }
+  function prev(){ goTo(index - 1); }
+  function start(){ timer = setInterval(next, AUTOPLAY_MS); }
+  function stop(){ clearInterval(timer); }
+  function restart(){ stop(); start(); }
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+
+  let touchStartX = 0, touchDeltaX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; stop(); }, { passive: true });
+  track.addEventListener('touchmove', e => { touchDeltaX = e.touches[0].clientX - touchStartX; }, { passive: true });
+  track.addEventListener('touchend', () => {
+    if (touchDeltaX > 50) prev();
+    else if (touchDeltaX < -50) next();
+    else restart();
+    touchDeltaX = 0;
+  });
+
+  root.setAttribute('tabindex', '0');
+  root.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+
+  root.addEventListener('click', e=>{
+    const link = e.target.closest('[data-goto]');
+    if(link){
+      e.preventDefault();
+      document.getElementById('mapToggle').click();
+      setTimeout(()=>openState(link.dataset.goto), 350);
+    }
+  });
+
+  render();
+  start();
+})();
+
+/* ---------------- MAP TOGGLE ---------------- */
+const mapToggle = document.getElementById('mapToggle');
+const mapPanelWrap = document.getElementById('mapPanelWrap');
+mapToggle.addEventListener('click', ()=>{
+  const isOpen = mapPanelWrap.classList.toggle('open');
+  mapToggle.textContent = isOpen ? 'Hide Map' : 'Explore Map';
+  if(isOpen) mapPanelWrap.scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+/* ---------------- MAP PINS ---------------- */
+const pinsWrap = document.getElementById('statePins');
+const ALL_STATES = {};
+Object.keys(FEATURED).forEach(id=>{ ALL_STATES[id] = {name:FEATURED_NAMES[id], ...FEATURED[id], featured:true}; });
+Object.keys(OTHER).forEach(id=>{ ALL_STATES[id] = {...OTHER[id], featured:false}; });
+const MAP_STATES = new Set(['kerala', 'mp', 'maharashtra', 'rajasthan', 'up']);
+
+Object.entries(ALL_STATES).forEach(([id,s])=>{
+  if(!MAP_STATES.has(id)) return;
+  const pin = document.createElement('button');
+  pin.type = 'button';
+  pin.className = 'state-pin';
+  pin.style.left = s.x + '%';
+  pin.style.top = s.y + '%';
+  pin.textContent = s.name;
+  pin.dataset.id = id;
+  pin.addEventListener('click', ()=>openState(id));
+  pinsWrap.appendChild(pin);
+});
+
+/* ---------------- STATE PANEL ---------------- */
+const panel = document.getElementById('statePanel');
+
+const CATEGORY_META = {
+  heritage:    {label:"Historical sites",         icon:"&#127963;"},
+  culture:     {label:"Culture",          icon:"&#127917;"},
+  art:         {label:"Art",icon:"&#127925;"},
+  food:        {label:"Food ", icon:"&#127860;"}
+};
+
+function emptyPanelHTML(){
+  return `<div class="panel-empty">
+    <div class="pe-icon">&#128205;</div>
+    <h4>Pick a state to begin</h4>
+    <p>Select any state on the map to explore its heritage, culture, music &amp; dance, and food.</p>
+    <div class="pe-chips">
+      ${Object.keys(FEATURED_NAMES).map(id=>
+        `<button class="pe-chip" data-goto-chip="${id}" type="button">${FEATURED_NAMES[id]}</button>`).join('')}
+    </div>
+    <p class="pe-fact">India has 28 states and 8 union territories, each with its own language, cuisine and festival calendar.</p>
+  </div>`;
+}
+
+function bindEmptyPanel(){
+  panel.querySelectorAll('[data-goto-chip]').forEach(chip=>{
+    chip.addEventListener('click', ()=>openState(chip.dataset.gotoChip));
+  });
+}
+
+function openState(id){
+  const s = ALL_STATES[id];
+  if(!s) return;
+  document.querySelectorAll('.state-pin').forEach(p=>p.classList.toggle('active', p.dataset.id===id));
+
+  const description = s.desc || s.tagline;
+  const catButtons = Object.entries(CATEGORY_META).map(([cat,meta])=>{
+    const count = (s.featured && s[cat]) ? s[cat].length : 0;
+    const countLabel = count ? `${count} places` : 'Coming soon';
+    return `<button class="cat-cube" data-cat="${cat}" type="button">
+      <span class="cc-icon">${meta.icon}</span>
+      <span class="cc-label">${meta.label}</span>
+      <span class="cc-count">${countLabel}</span>
+    </button>`;
+  }).join('');
+
+  panel.innerHTML = `
+    <div class="panel-cube">
+      <div class="panel-head">
+        <h3>${s.name}</h3>
+        <button class="panel-close" id="panelClose" type="button">&#10005;</button>
+      </div>
+      <p class="panel-desc">${description}</p>
+    </div>
+    <div class="cat-grid" id="catGrid">${catButtons}</div>
+    <p class="cat-helper">Tap a category below to browse its places, one by one.</p>
+    <div class="panel-body" id="panelBody"></div>
+  `;
+  panel.querySelector('#panelClose').addEventListener('click', ()=>{
+    document.querySelectorAll('.state-pin').forEach(p=>p.classList.remove('active'));
+    panel.innerHTML = emptyPanelHTML();
+    bindEmptyPanel();
+  });
+  panel.querySelectorAll('.cat-cube').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      panel.querySelectorAll('.cat-cube').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      showCategory(s, btn.dataset.cat);
+    });
+  });
+  panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function showCategory(s, cat){
+  const meta = CATEGORY_META[cat];
+  document.getElementById('detailCatTitle').innerHTML = meta.label + ' — ' + s.name;
+ 
+  document.getElementById('explorerTrack').classList.add('on-detail');
+
+  const body = document.getElementById('detailBody');
+  if(!s.featured || !s[cat] || !s[cat].length){
+    body.innerHTML = `<p class="coming-soon">Content for this category is being curated for ${s.name}. Check back soon!</p>`;
+    return;
+  }
+  const listHTML = `<div class="items-list">${s[cat].map((it,i)=>{
+    const imageSrc = getItemImage(s, it, '160/160');
+    return `<button class="place-card" data-idx="${i}" type="button">
+      <div>
+        <div class="pc-name">${it.name}${it.link ? '<span class="pc-link-badge">Full story</span>' : ''}</div>
+        <div class="pc-quote">"${it.blurb}"</div>
+      </div>
+      <div class="pc-photo"><img src="${imageSrc}" alt="${it.name}" loading="lazy"></div>
+    </button>`;
+  }).join('')}</div>`;
+
+  if(cat === 'heritage'){
+    let mapPanel = `<aside class="heritage-map-slot" aria-label="Map space reserved for ${s.name}"></aside>`;
+    if(['Maharashtra','Kerala','Madhya Pradesh','Rajasthan','Uttar Pradesh'].includes(s.name)){
+      const mapConfigs = {
+        'Maharashtra': {
+        title:'Historical Places in Maharashtra',
+        image:'assets/Maharashtra_Divisions_Eng.svg',
+        alt:'Map of Maharashtra',
+        ratio:'3105.7817 / 2453.0112',
+        pins:[
+          ['Ajanta Caves',47,33],['Kailash Temple',49,29],['Ellora Caves',49,38],
+          ['Elephanta Caves',24,45],['Kolaba Fort',25,51],['Raigad Fort',23,55]
+        ]
+        },
+        'Kerala': {
+        title:'Historical Places in Kerala',
+        image:'assets/Kerala-map-en.svg',
+        alt:'Map of Kerala',
+        ratio:'1429 / 1111',
+        pins:[
+          ['Fort Kochi',64,61],['Bekal Fort',41,5]
+        ]
+        },
+        'Madhya Pradesh': {
+          title:'Historical Places in Madhya Pradesh',
+          image:'assets/Madhya_Pradesh_district_map.svg',
+          alt:'Map of Madhya Pradesh',
+          ratio:'1829.419 / 1186.8521',
+          pins:[
+            ['Khajuraho Temples',75,42],['Sanchi Stupa',60,61],['Gwalior Fort',58,19],['Bhimbetka Rock Shelters',62,67],['Mandu',25,73]
+          ]
+        },
+        'Rajasthan': {
+          title:'Historical Places in Rajasthan',
+          image:'assets/Rajasthan_districts_map.svg',
+          alt:'Map of Rajasthan',
+          ratio:'308.59783 / 258.52682',
+          pins:[
+            ['Amber Fort',71,45],['Chittorgarh Fort',69,73],['Jantar Mantar',75,47],['Hawa Mahal',78,47],['Jal Mahal',78,41]
+          ]
+        },
+        'Uttar Pradesh': {
+          title:'Historical Places in Uttar Pradesh',
+          image:'assets/Uttar_Pradesh_districts.png',
+          alt:'Map of Uttar Pradesh',
+          ratio:'1231 / 897',
+          pins:[
+            ['Taj Mahal',24,49],['Fatehpur Sikri',27,54],['Sarnath',78,74],['Varanasi Ghats',83,78],['Jhansi Fort',36,72]
+          ]
+        }
+      };
+      const mapConfig = mapConfigs[s.name];
+      mapPanel = `<aside class="maha-map" aria-label="${mapConfig.title}">
+        <h5>${mapConfig.title}</h5>
+        <div class="maha-map-canvas" style="aspect-ratio:${mapConfig.ratio}">
+          <img src="${mapConfig.image}" alt="${mapConfig.alt}">
+          ${mapConfig.pins.map(([name,left,top],i)=>`<button class="maha-pin" data-idx="${i}" style="left:${left}%;top:${top}%" type="button">${name}</button>`).join('')}
+        </div>
+      </aside>`;
+    }
+    body.innerHTML = `<div class="heritage-layout">
+      ${listHTML}
+      ${mapPanel}
+    </div>`;
+  }else{
+    body.innerHTML = listHTML;
+  }
+
+  body.querySelectorAll('.maha-pin').forEach(pin=>{
+    pin.addEventListener('click', ()=>{
+      const place = body.querySelector(`.place-card[data-idx="${pin.dataset.idx}"]`);
+      if(!place) return;
+      body.querySelectorAll('.maha-pin').forEach(item=>item.classList.remove('active'));
+      body.querySelectorAll('.place-card').forEach(item=>item.classList.remove('active'));
+      pin.classList.add('active');
+      place.classList.add('active');
+      place.click();
+    });
+  });
+
+body.querySelectorAll('.place-card').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const it = s[cat][btn.dataset.idx];
+      body.querySelectorAll('.maha-pin').forEach(pin=>{
+        pin.classList.toggle('active', pin.dataset.idx === btn.dataset.idx);
+      });
+      body.querySelectorAll('.place-card').forEach(card=>card.classList.remove('active'));
+      btn.classList.add('active');
+      if(it.link){ window.open(it.link, '_blank'); return; }
+      const imageSrc = getItemImage(s, it, '480/360');
+      const descHTML = it.full ? it.full : `<p>${it.blurb}.</p>`;
+      body.innerHTML = `
+        <button class="panel-back" id="backBtn" type="button">&#8592;</button>
+        <div class="item-detail" style="margin-top:0.8rem;">
+          <div><h4>${it.name}</h4><div class="speech-actions"><button class="speak-description" type="button">&#128266; Listen</button><select class="speech-language" aria-label="Voice language"><option value="en-IN">English</option></select></div><div class="speech-content">${descHTML}</div></div>
+          <div class="photo"><img src="${imageSrc}" alt="${it.name}"></div>
+        </div>`;
+      const speakButton = body.querySelector('.speak-description');
+      const languageSelect = body.querySelector('.speech-language');
+      if('speechSynthesis' in window){
+        speakButton.addEventListener('click', ()=>{
+          if(window.speechSynthesis.speaking){
+            window.speechSynthesis.cancel();
+            speakButton.innerHTML = '&#128266; Listen';
+            return;
+          }
+          const text = `${it.name}. ${body.querySelector('.speech-content').innerText}`;
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = languageSelect.value;
+          utterance.rate = 0.92;
+          utterance.onstart = ()=>{ speakButton.innerHTML = '&#9209; Stop'; };
+          utterance.onend = ()=>{ speakButton.innerHTML = '&#128266; Listen'; };
+          window.speechSynthesis.speak(utterance);
+        });
+      }else{
+        speakButton.disabled = true;
+        speakButton.title = 'Voice playback is not supported in this browser';
+      }
+      document.getElementById('backBtn').addEventListener('click', ()=>showCategory(s, cat));
+    });
+  });
+}
+
+// Special case: the Kailasa Temple entry opens its own full page, as-is
+const kalbelia = FEATURED.rajasthan.art.find(it=>it.name === 'Kalbelia');
+if(kalbelia) kalbelia.image = 'assets/kalbeliya.jpg';
+if(FEATURED.maharashtra && FEATURED.maharashtra.heritage){
+  const kailasa = FEATURED.maharashtra.heritage.find(it=>it.name.indexOf('Kailash') === 0);
+  if(kailasa) kailasa.link = 'kailasa-temple-ellora.html';
+}
+document.getElementById('detailBack').addEventListener('click', ()=>{
+  document.getElementById('explorerTrack').classList.remove('on-detail');
+});
+
+if(window.location.hash === '#historical-sites-maharashtra'){
+  mapPanelWrap.classList.add('open');
+  mapToggle.textContent = 'Hide Map';
+  openState('maharashtra');
+  setTimeout(()=>showCategory(ALL_STATES.maharashtra, 'heritage'), 0);
+}
+</script>
+</body>
+</html>
